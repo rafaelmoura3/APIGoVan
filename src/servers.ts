@@ -12,6 +12,11 @@ app.use(express.json());
 //Route Params: http://localhost:3333/users/1 (identificar um recurso)
 //Body: http://localhost:3333/users/1 ()
 
+app.listen(3000, () => {
+    console.log('Server on port', 3000)
+})
+
+
 app.get('/users', (request, response) =>{
     return response.json({ message: 'Hello'});
 });
