@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/servers.ts"
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/servers.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "pg": "^8.6.0"
+    "pg": "^8.6.0",
+    "typeorm": "^0.2.34"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
