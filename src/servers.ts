@@ -20,5 +20,3 @@ app.listen(3000, () => {
 app.get('/users', (request, response) =>{
     return response.json({ message: 'Hello'});
 });
-
-app.listen(3333);
