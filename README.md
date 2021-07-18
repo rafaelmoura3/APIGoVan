@@ -1,5 +1,5 @@
 # APIGoVan TCC da Faculdade.
-API sendo desenvolvida em Node.js + PostgreSql com o front-end em Flutter.
+API sendo desenvolvida com Javascript + Node.js, PostgreSql para o DataBase e com o front-end em Flutter.
 
 Criadores: 
 - Rafael Moura
