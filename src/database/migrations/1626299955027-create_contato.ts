@@ -20,7 +20,7 @@ export class createContato1626299955027 implements MigrationInterface {
                 },
                 {
                     name: "valor",
-                    type: "char"
+                    type: "text"
                 }
             ]
         }))

@@ -16,7 +16,7 @@ export class createMotorista1626300079722 implements MigrationInterface {
                 },
                 {
                     name: "cnh",
-                    type: "interger"
+                    type: "integer"
                 }
             ]
         }))
