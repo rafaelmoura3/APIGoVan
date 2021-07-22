@@ -8,22 +8,22 @@ export class createMotorista1626300079722 implements MigrationInterface {
             name: 'motorista',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "cnh",
-                    type: "integer"
+                    name: 'cnh',
+                    type: 'integer'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("motorista");
+        await queryRunner.dropTable('motorista');
     }
 
 }

@@ -8,42 +8,42 @@ export class createEndereco1626299967488 implements MigrationInterface {
             name: 'endereco',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "cep",
-                    type: "varchar(15)"
+                    name: 'cep',
+                    type: 'varchar(15)'
                 },
                 {
-                    name: "logadouro",
-                    type: "varchar(20)"
+                    name: 'logadouro',
+                    type: 'varchar(20)'
                 },
                 {
-                    name: "numero",
-                    type: "varchar(6)"
+                    name: 'numero',
+                    type: 'varchar(6)'
                 },
                 {
-                    name: "bairro",
-                    type: "varchar(50)" 
+                    name: 'bairro',
+                    type: 'varchar(50)' 
                 },
                 {
-                    name: "complemento",
-                    type: "varchar(50)"
+                    name: 'complemento',
+                    type: 'varchar(50)'
                 },
                 {
-                    name: "cidade",
-                    type: ""
+                    name: 'cidade',
+                    type: 'text'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("endereco");
+        await queryRunner.dropTable('endereco');
     }
 
 }

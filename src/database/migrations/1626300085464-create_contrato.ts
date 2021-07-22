@@ -8,46 +8,46 @@ export class createContrato1626300085464 implements MigrationInterface {
             name: 'contrato',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "tipoContrato",
-                    type: " "
+                    name: 'tipoContrato',
+                    type: 'text'
                 },
                 {
-                    name: "urlPDF",
-                    type: "varchar(500)"
+                    name: 'urlPDF',
+                    type: 'varchar(500)'
                 },
                 {
-                    name: "contratoTipo",
-                    type: " "
+                    name: 'contratoTipo',
+                    type: 'text'
                 },
                 {
-                    name: "detalhes",
-                    type: "varchar(100)"
+                    name: 'detalhes',
+                    type: 'varchar(100)'
                 },
                 {
-                    name: "dataInicio",
-                    type: " "
+                    name: 'dataInicio',
+                    type: ' text'
                 },
                 {
-                    name: "dataFim",
-                    type: " "
+                    name: 'dataFim',
+                    type: 'text'
                 },
                 {
-                    name: "dataRenovacao",
-                    type: " "
+                    name: 'dataRenovacao',
+                    type: 'text'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("contrato");
+        await queryRunner.dropTable('contrato');
     }
 
 }

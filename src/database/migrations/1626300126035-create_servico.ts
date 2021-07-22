@@ -8,30 +8,30 @@ export class createServico1626300126035 implements MigrationInterface {
             name: 'servico',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "motorista",
-                    type: ""
+                    name: 'motorista',
+                    type: 'text'
                 },
                 {
-                    name:"passageiros",
-                    type:""
+                    name:'passageiros',
+                    type:'text'
                 },
                 {
-                    name:"trajeto",
-                    type:""
+                    name:'trajeto',
+                    type:'text'
                 },
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("servico");
+        await queryRunner.dropTable('servico');
     }
 
 }

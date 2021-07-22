@@ -5,10 +5,12 @@
     "username": "postgres",
     "password": "147852",
     "database": "GoVan",
-    "snychronize": "true",
+    "synchronize": true,
     "logging": false,
     "migrations": ["./src/database/migrations/*.ts"],
     "cli": {
-      "migrationsDir": "./src/database/migrations"
+      "entitiesDir": "./src/entity",
+      "migrationsDir": "./src/database/migrations",
+      "subscribersDir": "./src/subscriber"
     }
   }

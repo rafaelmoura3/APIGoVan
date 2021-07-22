@@ -8,38 +8,38 @@ export class createUsuario1626299941536 implements MigrationInterface {
             name: 'usuario',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "email",
-                    type: "varchar(200)"
+                    name: 'email',
+                    type: 'varchar(200)'
                 },
                 {
-                    name: "senhaHas",
-                    type: "varchar(20)",
+                    name: 'senhaHas',
+                    type: 'varchar(20)',
                 },
                 {
-                    name: "contato",
-                    type: "text"
+                    name: 'contato',
+                    type: 'text'
                 },
                 {
-                    name: "urlFoto",
-                    type: "text"
+                    name: 'urlFoto',
+                    type: 'text'
                 },
                 {
-                    name: "usuarioTipo",
-                    type: "integer"
+                    name: 'usuarioTipo',
+                    type: 'integer'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("usuario");
+        await queryRunner.dropTable('usuario');
     }
 
 }

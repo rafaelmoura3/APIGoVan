@@ -8,22 +8,22 @@ export class createTipoLogradouro1626300050225 implements MigrationInterface {
             name: 'tipoLogradouro',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "descricao",
-                    type: "varchar(300)"
+                    name: 'descricao',
+                    type: 'varchar(300)'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("tipoLogradouro");
+        await queryRunner.dropTable('tipoLogradouro');
     }
 
 }

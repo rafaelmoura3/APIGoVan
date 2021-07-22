@@ -8,38 +8,38 @@ export class createTrajeto1626300118244 implements MigrationInterface {
             name: 'trajeto',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "descricao",
-                    type: "varchar(300)"
+                    name: 'descricao',
+                    type: 'varchar(300)'
                 },
                 {
-                    name: "pontoInicio",
-                    type: "text"
+                    name: 'pontoInicio',
+                    type: 'text'
                 },
                 {
-                    name: "pontoDestino",
-                    type: "text"
+                    name: 'pontoDestino',
+                    type: 'text'
                 },
                 {
-                    name: "horarioChegada",
-                    type: "text"
+                    name: 'horarioChegada',
+                    type: 'text'
                 },
                 {
-                    name: "valorCobrado",
-                    type: "real"
+                    name: 'valorCobrado',
+                    type: 'real'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("trajeto");
+        await queryRunner.dropTable('trajeto');
     }
 
 }

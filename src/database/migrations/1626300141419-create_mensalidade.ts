@@ -8,52 +8,52 @@ export class createMensalidade1626300141419 implements MigrationInterface {
             name: 'mensalidade',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name:"valor",
-                    type:"uuid",
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    name:'valor',
+                    type:'uuid',
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name:"meses",
-                    type:"integer"
+                    name:'meses',
+                    type:'integer'
                 },
                 {
-                    name: "diaPagamento",
-                    type: "text"
+                    name: 'diaPagamento',
+                    type: 'text'
                 },
                 {
-                    name:"pessoa",
-                    type:""
+                    name:'pessoa',
+                    type:'text'
                 },
                 {
-                    name:"servico",
-                    type:""
+                    name:'servico',
+                    type:'text'
                 },
                 {
-                    name:"mes_inicial",
-                    type:"integer"
+                    name:'mes_inicial',
+                    type:'integer'
                 },
                 {
-                    name:"mes_atual",
-                    type:"interger"
+                    name:'mes_atual',
+                    type:'integer'
                 },
                 {
-                    name:"quitado",
-                    type:"boolean"
+                    name:'quitado',
+                    type:'boolean'
                 },
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("tipoUsuario");
+        await queryRunner.dropTable('tipoUsuario');
     }
 
 }

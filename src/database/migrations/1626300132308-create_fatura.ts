@@ -8,48 +8,48 @@ export class createFatura1626300132308 implements MigrationInterface {
             name: 'fatura',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "dataCriacao",
-                    type: ""
+                    name: 'dataCriacao',
+                    type: 'text'
                 },
                 {
-                    name:"valorTotal",
-                    type:"uuid",
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    name:'valorTotal',
+                    type:'uuid',
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name:"pagamento",
-                    type:""
+                    name:'pagamento',
+                    type:'text'
                 },
                 {
-                    name:"mensalidade",
-                    type:""
+                    name:'mensalidade',
+                    type:'text'
                 },
                 {
-                    name:"formaPagamento",
-                    type:"text"
+                    name:'formaPagamento',
+                    type:'text'
                 },
                 {
-                    name:"dataPagamento",
-                    type:"text"
+                    name:'dataPagamento',
+                    type:'text'
                 },
                 {
-                    name:"observacao",
-                    type:"text"
+                    name:'observacao',
+                    type:'text'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("fatura");
+        await queryRunner.dropTable('fatura');
     }
 
 }

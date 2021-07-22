@@ -8,26 +8,22 @@ export class createTipoContrato1626299992411 implements MigrationInterface {
             name: 'tipoContrato',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "descricao",
-                    type: "varchar(500)"
-                },
-                {
-                    name: "",
-                    type: ""
+                    name: 'descricao',
+                    type: 'varchar(500)'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("tipoContrato");
+        await queryRunner.dropTable('tipoContrato');
     }
 
 }

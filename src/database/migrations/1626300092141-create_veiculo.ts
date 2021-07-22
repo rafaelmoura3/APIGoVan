@@ -8,26 +8,26 @@ export class createVeiculo1626300092141 implements MigrationInterface {
             name: 'veiculo',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "placa",
-                    type: "varchar(10)"
+                    name: 'placa',
+                    type: 'varchar(10)'
                 },
                 {
-                    name: "url",
-                    type: "text"
+                    name: 'url',
+                    type: 'text'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("veiculo");
+        await queryRunner.dropTable('veiculo');
     }
 
 }

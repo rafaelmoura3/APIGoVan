@@ -8,22 +8,22 @@ export class createTipoContato1626299932487 implements MigrationInterface {
             name: 'tipoContato',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "descricao",
-                    type: "varchar(300)"
+                    name: 'descricao',
+                    type: 'varchar(300)'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("tipoContato");
+        await queryRunner.dropTable('tipoContato');
     }
 
 }

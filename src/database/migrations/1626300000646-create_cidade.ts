@@ -8,26 +8,22 @@ export class createCidade1626300000646 implements MigrationInterface {
             name: 'cidade',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "nome",
-                    type: "varchar(50)"
+                    name: 'nome',
+                    type: 'varchar(50)'
                 },
-                {
-                    name: " ",
-                    type: " "
-                }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("cidade");
+        await queryRunner.dropTable('cidade');
     }
 
 }

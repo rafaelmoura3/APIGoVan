@@ -8,26 +8,26 @@ export class createEstado1626299973144 implements MigrationInterface {
             name: 'estado',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "nome",
-                    type: "varchar(50)"
+                    name: 'nome',
+                    type: 'varchar(50)'
                 },
                 {
-                    name: "uf",
-                    type: "varchar(25)"
+                    name: 'uf',
+                    type: 'varchar(25)'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("estado");
+        await queryRunner.dropTable('estado');
     }
 
 }

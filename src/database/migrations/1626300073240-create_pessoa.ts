@@ -8,50 +8,50 @@ export class createPessoa1626300073240 implements MigrationInterface {
             name: 'pessoa',
             columns: [
                 {
-                    name: "uuid",
-                    type: "uuid",
+                    name: 'uuid',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()"
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
                 },
                 {
-                    name: "nome",
-                    type: "varchar(300)"
+                    name: 'nome',
+                    type: 'varchar(300)'
                 },
                 {
-                    name: "apelido",
-                    type: "varchar(20)"
+                    name: 'apelido',
+                    type: 'varchar(20)'
                 },
                 {
-                    name: "rg",
-                    type: "varchar(20)"
+                    name: 'rg',
+                    type: 'varchar(20)'
                 },
                 {
-                    name: "cpf",
-                    type: "varchar(15)"
+                    name: 'cpf',
+                    type: 'varchar(15)'
                 },
                 {
-                    name: "dataNascimento",
-                    type: "varchar(15)"
+                    name: 'dataNascimento',
+                    type: 'varchar(15)'
                 },
                 {
-                    name: "contato",
-                    type: "varchar(15)"
+                    name: 'contato',
+                    type: 'varchar(15)'
                 },
                 {
-                    name: "observacao",
-                    type: "varchar(100)"
+                    name: 'observacao',
+                    type: 'varchar(100)'
                 },
                 {
-                    name: "referencia",
-                    type: "varchar(30)"
+                    name: 'referencia',
+                    type: 'varchar(30)'
                 },
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("TipoUsuario");
+        await queryRunner.dropTable('TipoUsuario');
     }
 
 }
