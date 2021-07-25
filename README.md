@@ -5,6 +5,5 @@ Criadores:
 - Rafael Moura
 - Natan Amorim
 
-# APIGoVan (Back end) do TCC da Faculdade Ciencia da Computação Unip - Araçatuba (2021).
-  Front end - GoVan
+# Front end - GoVan
   https://github.com/NatanAmorim/tcc-govan/
