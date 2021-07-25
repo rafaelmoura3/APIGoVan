@@ -2,8 +2,8 @@
 API Rest sendo desenvolvida com Typescript + Node.js,  Javascript, PostgreSql para o DataBase e com o front-end em Flutter.
 
 Criadores: 
-- Rafael Moura
-- Natan Amorim
+- Rafael Moura - (Back end)
+- Natan Amorim - (Front end)
 
 # Front end - GoVan
 - https://github.com/NatanAmorim/tcc-govan/
