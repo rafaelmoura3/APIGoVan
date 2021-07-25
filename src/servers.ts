@@ -1,6 +1,8 @@
-import express from 'express';
+import express, { request, response } from 'express';
+import { getRepository } from 'typeorm';
+import tipoUsuario from './models/tipoUsuario';
+
 import './database/connection';
-//import "reflect-metadata";
 
 const app = express();
 app.use(express.json());
@@ -18,7 +20,20 @@ app.listen(3000, () => {
     console.log('Server on port', 3000)
 })
 
+app.post('/tipousuario', async (request, response) => {
+    const {
+    descricao    
+    } = request.body;
+    
+    const tipoUsuarioRepository = getRepository(tipoUsuario);
 
-app.get('/users', (request, response) =>{
+    const TipoUsuario = tipoUsuarioRepository.create({
+        descricao
+    });
+
+    await tipoUsuarioRepository.save(TipoUsuario);
+
     return response.json({ message: 'Hello'});
 });
+
+
