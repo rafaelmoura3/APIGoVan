@@ -6,4 +6,4 @@ Criadores:
 - Natan Amorim
 
 # Front end - GoVan
-  https://github.com/NatanAmorim/tcc-govan/
+- https://github.com/NatanAmorim/tcc-govan/
