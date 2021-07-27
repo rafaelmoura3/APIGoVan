@@ -1,15 +1,12 @@
 import { Entity, Column,PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('contato')
-export default class contato {
+@Entity('motorista')
+export default class motorista {
     
     @PrimaryGeneratedColumn('uuid')
     uuid: string;
 
     @Column()
-    descricao: string;
-
-    @Column()
-    valor: string;
+    cnh: number;
 
 }

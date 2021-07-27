@@ -8,11 +8,12 @@ export class createCidade1626300000646 implements MigrationInterface {
             name: 'cidade',
             columns: [
                 {
-                    name: 'uuid',
-                    type: 'uuid',
+                    name: 'id',
+                    type: 'integer',
+                    unsigned: true,
                     isPrimary: true,
-                    generationStrategy: 'uuid',
-                    default: 'uuid_generate_v4()'
+                    isGenerated: true,
+                    generationStrategy: 'increment' 
                 },
                 {
                     name: 'nome',

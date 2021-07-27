@@ -16,7 +16,7 @@ export class createFatura1626300132308 implements MigrationInterface {
                 },
                 {
                     name: 'dataCriacao',
-                    type: 'text'
+                    type: 'date'
                 },
                 {
                     name:'valorTotal',

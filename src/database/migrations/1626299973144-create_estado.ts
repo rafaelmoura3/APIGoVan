@@ -8,11 +8,12 @@ export class createEstado1626299973144 implements MigrationInterface {
             name: 'estado',
             columns: [
                 {
-                    name: 'uuid',
-                    type: 'uuid',
+                    name: 'id',
+                    type: 'integer',
+                    unsigned: true,
                     isPrimary: true,
-                    generationStrategy: 'uuid',
-                    default: 'uuid_generate_v4()'
+                    isGenerated: true,
+                    generationStrategy: 'increment' 
                 },
                 {
                     name: 'nome',

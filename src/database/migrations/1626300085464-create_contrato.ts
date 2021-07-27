@@ -32,15 +32,15 @@ export class createContrato1626300085464 implements MigrationInterface {
                 },
                 {
                     name: 'dataInicio',
-                    type: ' text'
+                    type: 'date'
                 },
                 {
                     name: 'dataFim',
-                    type: 'text'
+                    type: 'date'
                 },
                 {
                     name: 'dataRenovacao',
-                    type: 'text'
+                    type: 'date'
                 }
             ]
         }))

@@ -8,11 +8,12 @@ export class createTipoLogradouro1626300050225 implements MigrationInterface {
             name: 'tipoLogradouro',
             columns: [
                 {
-                    name: 'uuid',
-                    type: 'uuid',
+                    name: 'id',
+                    type: 'integer',
+                    unsigned: true,
                     isPrimary: true,
-                    generationStrategy: 'uuid',
-                    default: 'uuid_generate_v4()'
+                    isGenerated: true,
+                    generationStrategy: 'increment' 
                 },
                 {
                     name: 'descricao',
