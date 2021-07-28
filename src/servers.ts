@@ -1,6 +1,6 @@
 import express, { request, response } from 'express';
-import { getRepository } from 'typeorm';
-import tipoUsuario from './models/tipoUsuario';
+
+
 
 import './database/connection';
 
@@ -19,22 +19,3 @@ app.use(express.json());
 app.listen(3000, () => {
     console.log('Server on port', 3000)
 })
-
-app.post('/tipousuario', async (request, response) => {
-    const {
-    descricao    
-    } = request.body;
-    
-    const tipoUsuarioRepository = getRepository(tipoUsuario);
-
-    const TipoUsuario = tipoUsuarioRepository.create({
-        descricao
-    });
-
-    await tipoUsuarioRepository.save(TipoUsuario);
-
-    //retorna que a criação deu certo status(201) "codigo http"
-    return response.status(201).json({TipoUsuario});
-});
-
-
