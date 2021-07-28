@@ -33,7 +33,8 @@ app.post('/tipousuario', async (request, response) => {
 
     await tipoUsuarioRepository.save(TipoUsuario);
 
-    return response.json({ message: 'Hello'});
+    //retorna que a criação deu certo status(201) "codigo http"
+    return response.status(201).json({TipoUsuario});
 });
 
 
