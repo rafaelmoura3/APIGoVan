@@ -1,5 +1,5 @@
 # APIGoVan (Back end) do TCC da Faculdade Ciencia da Computação Unip - Araçatuba (2021).
-API Rest sendo desenvolvida com Typescript + Node.js, Javascript, utilização de TypeORM e Express para integração com PostgreSql, front-end em Flutter.
+API Rest com padrões MVC sendo desenvolvida com Typescript + Node.js, Javascript, utilização de TypeORM e Express para integração com PostgreSql, front-end em Flutter.
 
 Sobre o GoVan: É um aplicativo que tem a ideia de facilitar a vida de estudantes e motoristas de "vans", na hora de contratar um serviço e gerenciamento de passageiros.
 
