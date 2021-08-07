@@ -1,14 +1,14 @@
-import { Router } from 'express';
+import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import tipoUsuario from '../models/tipoUsuario';
 
-const routes = Router();
 
-routes.post('/tipousuario', async (request, response) => {
+export default{
+    async create(request: Request, response:Response){
     const {
     descricao    
     } = request.body;
-    
+ 
     const tipoUsuarioRepository = getRepository(tipoUsuario);
 
     const TipoUsuario = tipoUsuarioRepository.create({
@@ -19,4 +19,5 @@ routes.post('/tipousuario', async (request, response) => {
 
     //retorna que a criação deu certo status(201) "codigo http"
     return response.status(201).json({TipoUsuario});
-});
+    }
+};
