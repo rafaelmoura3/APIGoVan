@@ -16,7 +16,7 @@ export class createContato1626299955027 implements MigrationInterface {
                 },
                 {
                     name: 'tipoContato',
-                    type: ''
+                    type: 'text'
                 },
                 {
                     name: 'valor',

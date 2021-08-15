@@ -1,4 +1,5 @@
-import { Entity, Column,PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column,PrimaryGeneratedColumn, OneToOne } from "typeorm";
+import tipoContrato from "./tipoContrato";
 
 @Entity('tipoPoliticaCancelamento')
 export default class tipoPoliticaCancelamento {
@@ -9,4 +10,6 @@ export default class tipoPoliticaCancelamento {
     @Column()
     descricao: string;
 
+    @OneToOne(type => tipoContrato, tipoPoliticaCancelamento => tipoPoliticaCancelamento )
+    tipoContrato: tipoContrato;
 }

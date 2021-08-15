@@ -1,4 +1,5 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import tipoPoliticaCancelamento from "../../models/tipoPoliticaCancelamento";
 
 export class createTipoContrato1626299992411 implements MigrationInterface {
 
@@ -17,6 +18,21 @@ export class createTipoContrato1626299992411 implements MigrationInterface {
                 {
                     name: 'descricao',
                     type: 'varchar(500)'
+                },
+                {
+                    name: 'tipoPoliticaCancelamento_id',
+                    type: 'integer'
+                }
+            ],
+            foreignKeys:[
+                {
+                    name:'tipoPoliticaCancelamento',
+                    columnNames: ['tipoPoliticaCancelamento_id'],
+                    referencedTableName: 'TipoPoliticaCancelamento',
+                    referencedColumnNames: ['id'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
                 }
             ]
         }))
