@@ -34,13 +34,14 @@ export class createUsuario1626299941536 implements MigrationInterface {
                 {
                     name: 'usuarioTipo',
                     type: 'integer'
-                },
-                {
+                }
+                /*{
                     name: 'tipoContato_id',
                     type: 'uuid'
-                }
-            ],
-            foreignKeys:[
+                }*/
+            ]
+            
+            /*foreignKeys:[
                 {
                     name:'contato',
                     columnNames: ['tipoContato_id'],
@@ -50,7 +51,7 @@ export class createUsuario1626299941536 implements MigrationInterface {
                     onDelete:'CASCADE',
 
                 }
-            ]
+            ]*/
         }))
     }
 

@@ -1,5 +1,5 @@
-import { Entity, Column,PrimaryGeneratedColumn } from "typeorm";
-
+import { Entity, Column,PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate} from "typeorm";
+import bcrypt from "bcryptjs";
 @Entity('usuario')
 export default class usuario {
     
@@ -10,15 +10,21 @@ export default class usuario {
     email: string;
 
     @Column()
-    senhaHash:String;
+    senhaHash: string;
 
     @Column()
-    contato: String;
+    contato: string;
 
     @Column()
     urlFoto: string;
 
     @Column()
     usuarioTipo: number;
+
+    @BeforeInsert()
+    @BeforeUpdate()
+    encryptSenha(){
+        this.senhaHash = bcrypt.hashSync(this.senhaHash, 8);
+    }
 
 }

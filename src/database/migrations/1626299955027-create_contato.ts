@@ -39,7 +39,7 @@ export class createContato1626299955027 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('Contato');
+        await queryRunner.dropTable('contato');
     }
 
 }
