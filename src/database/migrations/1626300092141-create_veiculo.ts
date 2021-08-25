@@ -16,7 +16,7 @@ export class createVeiculo1626300092141 implements MigrationInterface {
                 },
                 {
                     name: 'placa',
-                    type: 'varchar(10)'
+                    type: 'varchar'
                 },
                 {
                     name: 'url',

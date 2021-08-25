@@ -20,15 +20,11 @@ export class createContrato1626300085464 implements MigrationInterface {
                 },
                 {
                     name: 'urlPDF',
-                    type: 'varchar(500)'
-                },
-                {
-                    name: 'contratoTipo',
-                    type: 'text'
+                    type: 'varchar'
                 },
                 {
                     name: 'detalhes',
-                    type: 'varchar(100)'
+                    type: 'varchar'
                 },
                 {
                     name: 'dataInicio',
@@ -41,6 +37,22 @@ export class createContrato1626300085464 implements MigrationInterface {
                 {
                     name: 'dataRenovacao',
                     type: 'date'
+                },
+                {
+                    name: 'tipoContrato_id',
+                    type: 'uuid'
+                }
+
+            ],
+            foreignKeys:[
+                {
+                    name:'tipoContrato',
+                    columnNames: ['tipoContrato_id'],
+                    referencedTableName: 'tipoContato',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
                 }
             ]
         }))

@@ -16,7 +16,7 @@ export class createTrajeto1626300118244 implements MigrationInterface {
                 },
                 {
                     name: 'descricao',
-                    type: 'varchar(300)'
+                    type: 'varchar'
                 },
                 {
                     name: 'pontoInicio',

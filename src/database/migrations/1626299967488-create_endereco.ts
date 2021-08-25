@@ -16,23 +16,23 @@ export class createEndereco1626299967488 implements MigrationInterface {
                 },
                 {
                     name: 'cep',
-                    type: 'varchar(15)'
+                    type: 'varchar'
                 },
                 {
                     name: 'logadouro',
-                    type: 'varchar(20)'
+                    type: 'varchar'
                 },
                 {
                     name: 'numero',
-                    type: 'varchar(6)'
+                    type: 'varchar'
                 },
                 {
                     name: 'bairro',
-                    type: 'varchar(50)' 
+                    type: 'varchar' 
                 },
                 {
                     name: 'complemento',
-                    type: 'varchar(50)'
+                    type: 'varchar'
                 },
                 {
                     name: 'cidade',

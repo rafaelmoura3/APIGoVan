@@ -17,7 +17,7 @@ export class createCidade1626300000646 implements MigrationInterface {
                 },
                 {
                     name: 'nome',
-                    type: 'varchar(50)'
+                    type: 'varchar'
                 },
             ]
         }))

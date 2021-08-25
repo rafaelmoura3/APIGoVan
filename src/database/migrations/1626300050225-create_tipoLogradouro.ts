@@ -17,7 +17,7 @@ export class createTipoLogradouro1626300050225 implements MigrationInterface {
                 },
                 {
                     name: 'descricao',
-                    type: 'varchar(300)'
+                    type: 'varchar'
                 }
             ]
         }))

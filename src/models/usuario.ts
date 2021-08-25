@@ -7,16 +7,13 @@ export default class usuario {
     uuid: string;
 
     @Column()
-    descricao: string;
-
-    @Column()
     email: string;
 
     @Column()
     senhaHash:String;
 
-    //@Column()
-    //contato:
+    @Column()
+    contato: String;
 
     @Column()
     urlFoto: string;

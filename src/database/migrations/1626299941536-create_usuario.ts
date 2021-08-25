@@ -16,11 +16,12 @@ export class createUsuario1626299941536 implements MigrationInterface {
                 },
                 {
                     name: 'email',
-                    type: 'varchar(200)'
+                    type: 'varchar',
+                    isUnique: true
                 },
                 {
                     name: 'senhaHas',
-                    type: 'varchar(20)',
+                    type: 'varchar',
                 },
                 {
                     name: 'contato',
@@ -33,6 +34,21 @@ export class createUsuario1626299941536 implements MigrationInterface {
                 {
                     name: 'usuarioTipo',
                     type: 'integer'
+                },
+                {
+                    name: 'tipoContato_id',
+                    type: 'uuid'
+                }
+            ],
+            foreignKeys:[
+                {
+                    name:'contato',
+                    columnNames: ['tipoContato_id'],
+                    referencedTableName: 'tipoContato',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
                 }
             ]
         }))

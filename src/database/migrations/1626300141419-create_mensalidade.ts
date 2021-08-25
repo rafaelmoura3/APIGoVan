@@ -47,7 +47,7 @@ export class createMensalidade1626300141419 implements MigrationInterface {
                 {
                     name:'quitado',
                     type:'boolean'
-                },
+                }
             ]
         }))
     }

@@ -16,7 +16,7 @@ export class createTipoUsuario1626299918673 implements MigrationInterface {
                 },
                 {
                     name: 'descricao',
-                    type: 'varchar(300)'
+                    type: 'varchar'
                 }
             ]
         }))

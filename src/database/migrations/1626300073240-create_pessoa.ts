@@ -16,35 +16,35 @@ export class createPessoa1626300073240 implements MigrationInterface {
                 },
                 {
                     name: 'nome',
-                    type: 'varchar(300)'
+                    type: 'varchar'
                 },
                 {
                     name: 'apelido',
-                    type: 'varchar(20)'
+                    type: 'varchar'
                 },
                 {
                     name: 'rg',
-                    type: 'varchar(20)'
+                    type: 'varchar'
                 },
                 {
                     name: 'cpf',
-                    type: 'varchar(15)'
+                    type: 'varchar'
                 },
                 {
                     name: 'dataNascimento',
-                    type: 'varchar(15)'
+                    type: 'varchar'
                 },
                 {
                     name: 'contato',
-                    type: 'varchar(15)'
+                    type: 'varchar'
                 },
                 {
                     name: 'observacao',
-                    type: 'varchar(100)'
+                    type: 'varchar'
                 },
                 {
                     name: 'referencia',
-                    type: 'varchar(30)'
+                    type: 'varchar'
                 },
             ]
         }))

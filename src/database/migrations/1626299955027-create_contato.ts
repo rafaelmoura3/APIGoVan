@@ -5,7 +5,7 @@ export class createContato1626299955027 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-            name: 'Contato',
+            name: 'contato',
             columns: [
                 {
                     name: 'uuid',
@@ -14,13 +14,25 @@ export class createContato1626299955027 implements MigrationInterface {
                     generationStrategy: 'uuid',
                     default: 'uuid_generate_v4()'
                 },
-                {
-                    name: 'tipoContato',
-                    type: 'text'
-                },
+                
                 {
                     name: 'valor',
                     type: 'text'
+                },
+                {
+                    name: 'tipoContato_id',
+                    type: 'uuid'
+                }
+            ],
+            foreignKeys:[
+                {
+                    name:'tipoContato',
+                    columnNames: ['tipoContato_id'],
+                    referencedTableName: 'tipoContato',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
                 }
             ]
         }))

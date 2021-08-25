@@ -17,11 +17,11 @@ export class createEstado1626299973144 implements MigrationInterface {
                 },
                 {
                     name: 'nome',
-                    type: 'varchar(50)'
+                    type: 'varchar'
                 },
                 {
                     name: 'uf',
-                    type: 'varchar(25)'
+                    type: 'varchar'
                 }
             ]
         }))

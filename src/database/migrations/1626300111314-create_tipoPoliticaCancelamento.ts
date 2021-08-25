@@ -5,7 +5,7 @@ export class createTipoPoliticaCancelamento1626300111314 implements MigrationInt
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-            name: 'TipoPoliticaCancelamento',
+            name: 'tipoPoliticaCancelamento',
             columns: [
                 {
                     name: 'id',
@@ -17,14 +17,14 @@ export class createTipoPoliticaCancelamento1626300111314 implements MigrationInt
                 },
                 {
                     name: 'descricao',
-                    type: 'varchar(300)'
+                    type: 'varchar'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('TipoPoliticaCancelamento');
+        await queryRunner.dropTable('tipoPoliticaCancelamento');
     }
 
 }
