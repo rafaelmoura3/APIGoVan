@@ -7,7 +7,7 @@ import User from '../models/usuario';
 
 
 class loginController{
-   async store(req: Request, res: Response){
+   async login(req: Request, res: Response){
         const repository = getRepository(User);
         const { email, senhaHash} = req.body;
 

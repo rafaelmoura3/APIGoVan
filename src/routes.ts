@@ -7,7 +7,7 @@ const routes = Router();
 
 
 routes.post('/usuario', usuarioController.store);
-routes.post('/login', loginController.store);
+routes.post('/login', loginController.login);
 routes.get('/usuario',authMiddleware , usuarioController.index);
 
 export default routes;
