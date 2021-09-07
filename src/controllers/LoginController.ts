@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/usuario';
 
 
-class authController{
+class loginController{
    async store(req: Request, res: Response){
         const repository = getRepository(User);
         const { email, senhaHash} = req.body;
@@ -35,4 +35,4 @@ class authController{
 }
 
 
-export default new authController();
+export default new loginController();
