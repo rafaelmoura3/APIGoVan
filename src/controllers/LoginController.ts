@@ -9,7 +9,7 @@ import User from '../models/usuario';
 class authController{
    async store(req: Request, res: Response){
         const repository = getRepository(User);
-        const { email, senhaHash, contato, urlFoto ,usuarioTipo} = req.body;
+        const { email, senhaHash} = req.body;
 
         const user = await repository.findOne({ where: {email} });
 
