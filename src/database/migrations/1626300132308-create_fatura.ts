@@ -20,29 +20,52 @@ export class createFatura1626300132308 implements MigrationInterface {
                 },
                 {
                     name:'valorTotal',
-                    type:'uuid',
-                    generationStrategy: 'uuid',
-                    default: 'uuid_generate_v4()'
+                    type:'real'
                 },
                 {
                     name:'pagamento',
-                    type:'text'
-                },
-                {
-                    name:'mensalidade',
-                    type:'text'
+                    type:'varchar'
                 },
                 {
                     name:'formaPagamento',
-                    type:'text'
+                    type:'varchar'
                 },
                 {
                     name:'dataPagamento',
-                    type:'text'
+                    type:'varchar'
                 },
                 {
                     name:'observacao',
-                    type:'text'
+                    type:'varchar'
+                },
+                {
+                    name:'mensalidade_id',
+                    type:'uuid'
+                },
+                {
+                    name:'pagamento_id',
+                    type:'uuid'
+                }
+            ],
+            
+            foreignKeys:[
+                {
+                    name:'mensalidade_id',
+                    columnNames: ['mensalidade_id'],
+                    referencedTableName: 'mensalidade',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                },
+		        {
+                    name:'pagamento_id',
+                    columnNames: ['pagamento_id'],
+                    referencedTableName: 'pagamento',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
                 }
             ]
         }))

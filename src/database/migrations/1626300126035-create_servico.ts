@@ -26,6 +26,21 @@ export class createServico1626300126035 implements MigrationInterface {
                     name:'trajeto',
                     type:'text'
                 },
+                {
+                    name:'veiculo_id',
+                    type:'uuid'
+                }
+            ],
+            foreignKeys:[
+                {
+                    name:'veiculo_id',
+                    columnNames: ['veiculo_id'],
+                    referencedTableName: 'veiculo',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                }
             ]
         }))
     }

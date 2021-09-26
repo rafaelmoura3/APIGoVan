@@ -16,9 +16,7 @@ export class createMensalidade1626300141419 implements MigrationInterface {
                 },
                 {
                     name:'valor',
-                    type:'uuid',
-                    generationStrategy: 'uuid',
-                    default: 'uuid_generate_v4()'
+                    type:'real'
                 },
                 {
                     name:'meses',
@@ -26,15 +24,7 @@ export class createMensalidade1626300141419 implements MigrationInterface {
                 },
                 {
                     name: 'diaPagamento',
-                    type: 'text'
-                },
-                {
-                    name:'pessoa',
-                    type:'text'
-                },
-                {
-                    name:'servico',
-                    type:'text'
+                    type: 'varchar'
                 },
                 {
                     name:'mes_inicial',
@@ -47,6 +37,34 @@ export class createMensalidade1626300141419 implements MigrationInterface {
                 {
                     name:'quitado',
                     type:'boolean'
+                },
+                {
+                    name:'pessoa_id',
+                    type:'uuid'
+                },
+                {
+                    name:'servico_id',
+                    type:'uuid'
+                },
+            ],
+            foreignKeys:[
+                {
+                    name:'pessoa_id',
+                    columnNames: ['pessoa_id'],
+                    referencedTableName: 'pessoa',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                },
+                {
+                    name:'servico_id',
+                    columnNames: ['servico_id'],
+                    referencedTableName: 'servico',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
                 }
             ]
         }))

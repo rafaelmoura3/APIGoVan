@@ -17,7 +17,7 @@ export class createContato1626299955027 implements MigrationInterface {
                 
                 {
                     name: 'valor',
-                    type: 'text'
+                    type: 'varchar'
                 },
                 {
                     name: 'tipoContato_id',

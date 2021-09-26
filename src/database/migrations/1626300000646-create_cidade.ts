@@ -19,7 +19,23 @@ export class createCidade1626300000646 implements MigrationInterface {
                     name: 'nome',
                     type: 'varchar'
                 },
-            ]
+                {
+                    name: 'estado_id',
+                    type: 'integer'
+                }
+            ],
+            
+            foreignKeys:[
+                {
+                    name:'estado_id',
+                    columnNames: ['estado_id'],
+                    referencedTableName: 'estado',
+                    referencedColumnNames: ['id'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                }
+            ] 
         }))
     }
 

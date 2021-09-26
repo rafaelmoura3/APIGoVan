@@ -17,6 +17,22 @@ export class createMotorista1626300079722 implements MigrationInterface {
                 {
                     name: 'cnh',
                     type: 'integer'
+                },
+                {
+                    name: 'pessoa_id',
+                    type: 'uuid'
+                }
+            ],
+            
+            foreignKeys:[
+                {
+                    name:'pessoa_id',
+                    columnNames: ['pessoa_id'],
+                    referencedTableName: 'pessoa',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
                 }
             ]
         }))

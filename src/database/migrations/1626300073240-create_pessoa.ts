@@ -35,8 +35,8 @@ export class createPessoa1626300073240 implements MigrationInterface {
                     type: 'varchar'
                 },
                 {
-                    name: 'contato',
-                    type: 'varchar'
+                    name: 'contato_id',
+                    type: 'uuid'
                 },
                 {
                     name: 'observacao',
@@ -45,7 +45,18 @@ export class createPessoa1626300073240 implements MigrationInterface {
                 {
                     name: 'referencia',
                     type: 'varchar'
-                },
+                }
+            ],
+            foreignKeys:[
+                {
+                    name:'contato',
+                    columnNames: ['contato_id'],
+                    referencedTableName: 'contato',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                }
             ]
         }))
     }

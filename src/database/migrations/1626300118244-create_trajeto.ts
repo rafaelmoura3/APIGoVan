@@ -20,15 +20,15 @@ export class createTrajeto1626300118244 implements MigrationInterface {
                 },
                 {
                     name: 'pontoInicio',
-                    type: 'text'
+                    type: 'varchar'
                 },
                 {
                     name: 'pontoDestino',
-                    type: 'text'
+                    type: 'varchar'
                 },
                 {
                     name: 'horarioChegada',
-                    type: 'text'
+                    type: 'varchar'
                 },
                 {
                     name: 'valorCobrado',

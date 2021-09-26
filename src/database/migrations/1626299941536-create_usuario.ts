@@ -24,34 +24,39 @@ export class createUsuario1626299941536 implements MigrationInterface {
                     type: 'varchar',
                 },
                 {
-                    name: 'contato',
-                    type: 'text'
-                },
-                {
                     name: 'urlFoto',
                     type: 'text'
                 },
                 {
-                    name: 'usuarioTipo',
-                    type: 'integer'
-                }
-                /*{
-                    name: 'tipoContato_id',
+                    name: 'tipoUsuario_id',
                     type: 'uuid'
-                }*/
-            ]
-            
-            /*foreignKeys:[
+                },
                 {
-                    name:'contato',
-                    columnNames: ['tipoContato_id'],
-                    referencedTableName: 'tipoContato',
+                    name: 'contato_id',
+                    type: 'uuid'
+                }
+            ],
+            
+            foreignKeys:[
+                {
+                    name:'tipoUsuario_id',
+                    columnNames: ['tipoUsuario_id'],
+                    referencedTableName: 'tipoUsuario',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                },
+                {
+                    name:'contato_id',
+                    columnNames: ['contato_id'],
+                    referencedTableName: 'contato',
                     referencedColumnNames: ['uuid'],
                     onUpdate:'CASCADE',
                     onDelete:'CASCADE',
 
                 }
-            ]*/
+            ]
         }))
     }
 

@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class createVeiculo1626300092141 implements MigrationInterface {
+export class createPagamento1632683164616 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-            name: 'veiculo',
+            name: 'pagamento',
             columns: [
                 {
                     name: 'uuid',
@@ -14,20 +14,21 @@ export class createVeiculo1626300092141 implements MigrationInterface {
                     generationStrategy: 'uuid',
                     default: 'uuid_generate_v4()'
                 },
+                
                 {
-                    name: 'placa',
+                    name: 'forma_de_pagamento',
                     type: 'varchar'
                 },
                 {
-                    name: 'url',
-                    type: 'varchar'
+                    name: 'valor_pago',
+                    type: 'real'
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('veiculo');
+        await queryRunner.dropTable('pagamento');
     }
 
 }
