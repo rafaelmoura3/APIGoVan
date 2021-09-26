@@ -71,7 +71,7 @@ export class createMensalidade1626300141419 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('tipoUsuario');
+        await queryRunner.dropTable('mensalidade');
     }
 
 }
