@@ -1,4 +1,8 @@
-import { Entity, Column,PrimaryGeneratedColumn } from "typeorm";
+import { type } from "os";
+import { Entity, Column,PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import contato from "./contato";
+import endereco from "./endereco";
+import usuario from "./usuario";
 
 @Entity('pessoa')
 export default class pessoa {
@@ -21,13 +25,25 @@ export default class pessoa {
     @Column()
     dataNascimento: string;
 
-    //@Column()
-    //contato:
+    @OneToOne(type => endereco, pessoa => pessoa)
+    @JoinColumn()
+    endereco:endereco;
 
     @Column()
     observacao: string;
 
     @Column()
     referencia: string;
+
+    //Relacionamento de usuario_fk com pessoa
+    @OneToOne(type => usuario, pessoa => pessoa)
+    @JoinColumn()
+    usuario:usuario;
+    
+
+    //Relacionamento de contato_fk com pessoa
+    //@OneToOne(type => contato, pessoa => pessoa)
+    //@JoinColumn()
+    //contato:contato;
     
 }

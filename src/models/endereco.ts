@@ -1,4 +1,8 @@
-import { Entity, Column,PrimaryGeneratedColumn } from "typeorm";
+import { type } from "os";
+import { Entity, Column,PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import cidade from "./cidade";
+import pessoa from "./pessoa";
+import tipoLogradouro from "./tipoLogradouro";
 
 @Entity('endereco')
 export default class endereco {
@@ -21,7 +25,18 @@ export default class endereco {
     @Column()
     complemento: string;
 
-    //@Column()
-    //cidade:
+    //Relacionamento de endereco com cidade_fk
+    @OneToOne(type => cidade, endereco => endereco)
+    @JoinColumn()
+    cidade:cidade;
+
+    //Relacionamento de endereco com tipoLogradouro_fk
+    @OneToOne(type => tipoLogradouro, endereco => endereco)
+    @JoinColumn()
+    tipoLogradouro:tipoLogradouro;
+
+    //Relacionamento de endereco_fk com pessoa
+    @OneToOne(type => pessoa, endereco => endereco)
+    pessoa:pessoa;
     
 }

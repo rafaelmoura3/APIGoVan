@@ -1,4 +1,7 @@
-import { Entity, Column,PrimaryGeneratedColumn } from "typeorm";
+import { type } from "os";
+import { Entity, Column,PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import endereco from "./endereco";
+import estado from "./estado";
 
 @Entity('cidade')
 export default class cidade {
@@ -9,7 +12,13 @@ export default class cidade {
     @Column()
     descricao: string;
 
-    //@Column()
-    //estado:
+    //Relacionamento de cidade com estado_fk
+    @OneToOne(type => estado, cidade => cidade)
+    @JoinColumn()
+    estado:estado;
+
+    //Relacionamento de cidade_fk com endereco
+    @OneToOne(type => endereco, cidade => cidade)
+    endereco: endereco;
 
 }

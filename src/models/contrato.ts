@@ -1,4 +1,6 @@
-import { Entity, Column,PrimaryGeneratedColumn } from "typeorm";
+import { type } from "os";
+import { Entity, Column,PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import tipoContrato from "./tipoContrato";
 
 @Entity('contrato')
 export default class contrato {
@@ -6,14 +8,12 @@ export default class contrato {
     @PrimaryGeneratedColumn('uuid')
     uuid: string;
 
-    //@Column()
-    //tipoContrato: string;
+    @OneToOne(type => tipoContrato, contrato => contrato)
+    @JoinColumn()
+    tipoContrato: tipoContrato;
 
     @Column()
     urlPDF: string;
-
-    //@Column()
-    //contratoTipo:
 
     @Column()
     detalhes: string;

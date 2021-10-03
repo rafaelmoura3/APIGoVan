@@ -15,4 +15,7 @@ export default class servico {
     //@Column()
     //trajeto:
 
+    //@Column()
+    //veiculo:
+
 }

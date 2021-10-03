@@ -7,6 +7,8 @@ export default class motorista {
     uuid: string;
 
     @Column()
-    cnh: number;
+    cnh: string;
 
+     //@Column()
+    //pessoa:
 }

@@ -45,9 +45,45 @@ export class createPessoa1626300073240 implements MigrationInterface {
                 {
                     name: 'referencia',
                     type: 'varchar'
+                },
+                {
+                    name: 'endereco_id',
+                    type: 'uuid'
+                },
+                {
+                    name: 'usuario_id',
+                    type: 'uuid'
                 }
+
             ],
             foreignKeys:[
+                {
+                    name:'contato',
+                    columnNames: ['contato_id'],
+                    referencedTableName: 'contato',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                },
+                {
+                    name:'endereco',
+                    columnNames: ['endereco_id'],
+                    referencedTableName: 'endereco',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                },
+                {
+                    name:'usuario',
+                    columnNames: ['endereco_id'],
+                    referencedTableName: 'endereco',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                },
                 {
                     name:'contato',
                     columnNames: ['contato_id'],

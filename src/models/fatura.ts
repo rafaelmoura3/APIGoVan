@@ -10,7 +10,7 @@ export default class fatura {
     dataCriacao: Date;
 
     @Column()
-    valorTotal: string;
+    valorTotal: number;
 
     //@Column()
     //pagamento:
