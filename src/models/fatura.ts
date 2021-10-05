@@ -1,4 +1,5 @@
-import { Entity, Column,PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column,PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import pagamento from "./pagamento";
 
 @Entity('fatura')
 export default class fatura {
@@ -12,9 +13,12 @@ export default class fatura {
     @Column()
     valorTotal: number;
 
-    //@Column()
-    //pagamento:
-
+    
+    //Relacionamento de pagamento_fk com fatura
+    @OneToOne(() => pagamento, fatura=> fatura)
+    @JoinColumn()
+    pagamento: pagamento;
+    
     //@Column()
     //mensalidade:
 

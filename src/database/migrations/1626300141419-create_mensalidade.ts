@@ -46,6 +46,10 @@ export class createMensalidade1626300141419 implements MigrationInterface {
                     name:'servico_id',
                     type:'uuid'
                 },
+                {
+                    name:'fatura_id',
+                    type:'uuid'
+                }
             ],
             foreignKeys:[
                 {
@@ -61,6 +65,15 @@ export class createMensalidade1626300141419 implements MigrationInterface {
                     name:'servico_id',
                     columnNames: ['servico_id'],
                     referencedTableName: 'servico',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                },
+                {
+                    name:'fatura_id',
+                    columnNames: ['fatura_id'],
+                    referencedTableName: 'fatura',
                     referencedColumnNames: ['uuid'],
                     onUpdate:'CASCADE',
                     onDelete:'CASCADE',

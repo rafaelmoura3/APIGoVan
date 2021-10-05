@@ -1,7 +1,6 @@
 import { Entity, Column,PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, OneToOne, JoinColumn} from "typeorm";
 import bcrypt from "bcryptjs";
 import tipoUsuario from "./tipoUsuario";
-import { type } from "os";
 import pessoa from "./pessoa";
 @Entity('usuario')
 export default class usuario {
@@ -31,12 +30,12 @@ export default class usuario {
     }
 
     //Relacionamento de tipousuario_fk com usuario
-    @OneToOne(type => tipoUsuario, usuario=> usuario)
+    @OneToOne(()=> tipoUsuario, usuario=> usuario)
     @JoinColumn()
     tipoUsuario: tipoUsuario;
 
 
-    @OneToOne(type => pessoa, usuario => usuario)
+    @OneToOne(() => pessoa, usuario => usuario)
     pessoa:pessoa;
 
 }

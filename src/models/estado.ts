@@ -1,4 +1,3 @@
-import { type } from "os";
 import { Entity, Column,PrimaryGeneratedColumn, OneToOne } from "typeorm";
 import cidade from "./cidade";
 
@@ -15,6 +14,6 @@ export default class estado {
     uf: string;
     
     //Relacionamento de estado com cidade
-    @OneToOne(type => cidade, estado => estado)
+    @OneToOne(() => cidade, estado => estado)
     cidade:cidade;
 }

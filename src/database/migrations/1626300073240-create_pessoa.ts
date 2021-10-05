@@ -83,15 +83,6 @@ export class createPessoa1626300073240 implements MigrationInterface {
                     onUpdate:'CASCADE',
                     onDelete:'CASCADE',
 
-                },
-                {
-                    name:'contato',
-                    columnNames: ['contato_id'],
-                    referencedTableName: 'contato',
-                    referencedColumnNames: ['uuid'],
-                    onUpdate:'CASCADE',
-                    onDelete:'CASCADE',
-
                 }
             ]
         }))

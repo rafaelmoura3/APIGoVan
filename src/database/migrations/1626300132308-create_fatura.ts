@@ -56,7 +56,6 @@ export class createFatura1626300132308 implements MigrationInterface {
                     referencedColumnNames: ['uuid'],
                     onUpdate:'CASCADE',
                     onDelete:'CASCADE',
-
                 },
 		        {
                     name:'pagamento_id',
@@ -65,7 +64,6 @@ export class createFatura1626300132308 implements MigrationInterface {
                     referencedColumnNames: ['uuid'],
                     onUpdate:'CASCADE',
                     onDelete:'CASCADE',
-
                 }
             ]
         }))

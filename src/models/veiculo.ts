@@ -1,4 +1,5 @@
-import { Entity, Column,PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column,PrimaryGeneratedColumn, OneToOne } from "typeorm";
+import servico from "./servico";
 
 @Entity('veiculo')
 export default class veiculo {
@@ -12,4 +13,8 @@ export default class veiculo {
     @Column()
     urlFoto: string;
     
+
+     //Relacionamento de servico com veiculo_fk
+     @OneToOne(()=> servico, veiculo=> veiculo)
+     servico: servico;
 }

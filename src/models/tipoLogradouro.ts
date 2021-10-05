@@ -1,4 +1,3 @@
-import { type } from "os";
 import { Entity, Column,PrimaryGeneratedColumn, OneToOne } from "typeorm";
 import endereco from "./endereco";
 
@@ -12,7 +11,7 @@ export default class tipoLogradouro {
     descricao: string;
 
     //Relacionamento de tipoLogradouro_fk com endereco
-    @OneToOne(type => endereco, tipoLogradouro => tipoLogradouro)
+    @OneToOne(() => endereco, tipoLogradouro => tipoLogradouro)
     endereco:endereco;
     
 }

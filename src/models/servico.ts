@@ -1,4 +1,6 @@
-import { Entity, Column,PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column,PrimaryGeneratedColumn, JoinColumn, OneToOne, OneToMany } from "typeorm";
+import motorista from "./motorista";
+import veiculo from "./veiculo";
 
 @Entity('servico')
 export default class servico {
@@ -6,8 +8,8 @@ export default class servico {
     @PrimaryGeneratedColumn('uuid')
     uuid: string;
 
-    //@Column()
-    //motorista: 
+    @OneToMany(() => motorista, servico => servico)
+    motorista:motorista[];
 
     //@Column()
     //passageiro:
@@ -15,7 +17,9 @@ export default class servico {
     //@Column()
     //trajeto:
 
-    //@Column()
-    //veiculo:
+    //Relacionamento de veiculo_fk com servico
+    @OneToOne(()=> veiculo, servico=> servico)
+    @JoinColumn()
+    veiculo: veiculo;
 
 }

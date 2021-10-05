@@ -1,4 +1,3 @@
-import { type } from "os";
 import { Entity, Column,PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
 import tipoContrato from "./tipoContrato";
 
@@ -8,7 +7,7 @@ export default class contrato {
     @PrimaryGeneratedColumn('uuid')
     uuid: string;
 
-    @OneToOne(type => tipoContrato, contrato => contrato)
+    @OneToOne(() => tipoContrato, contrato => contrato)
     @JoinColumn()
     tipoContrato: tipoContrato;
 

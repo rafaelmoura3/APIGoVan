@@ -1,4 +1,3 @@
-import { type } from "os";
 import { Entity, Column,PrimaryGeneratedColumn, OneToOne } from "typeorm";
 import contato from "./contato";
 
@@ -12,6 +11,6 @@ export default class tipoContato {
     descricao: string;
 
     //Relacionamento de contato com tipoContato
-    @OneToOne(type => contato, tipoContato => tipoContato) 
+    @OneToOne(() => contato, tipoContato => tipoContato) 
     contato:contato; 
 }

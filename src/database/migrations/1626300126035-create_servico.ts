@@ -15,19 +15,23 @@ export class createServico1626300126035 implements MigrationInterface {
                     default: 'uuid_generate_v4()'
                 },
                 {
-                    name: 'motorista',
+                    name: 'motorista_id',
                     type: 'text'
                 },
                 {
-                    name:'passageiros',
+                    name:'passageiros_id',
                     type:'text'
                 },
                 {
-                    name:'trajeto',
+                    name:'trajeto_id',
                     type:'text'
                 },
                 {
                     name:'veiculo_id',
+                    type:'uuid'
+                },
+                {
+                    name:'contrato_id',
                     type:'uuid'
                 }
             ],
@@ -40,7 +44,43 @@ export class createServico1626300126035 implements MigrationInterface {
                     onUpdate:'CASCADE',
                     onDelete:'CASCADE',
 
-                }
+                },
+                {
+                    name:'motorista_id',
+                    columnNames: ['motorista_id'],
+                    referencedTableName: 'motorista',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                },
+                {
+                    name:'passageiros_id',
+                    columnNames: ['passageiros_id'],
+                    referencedTableName: 'passageiros',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                },
+                {
+                    name:'trajeto_id',
+                    columnNames: ['trajeto_id'],
+                    referencedTableName: 'trajeto',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                },
+                {
+                    name:'contrato_id',
+                    columnNames: ['contrato_id'],
+                    referencedTableName: 'contrato',
+                    referencedColumnNames: ['uuid'],
+                    onUpdate:'CASCADE',
+                    onDelete:'CASCADE',
+
+                },
             ]
         }))
     }

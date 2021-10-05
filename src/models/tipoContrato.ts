@@ -1,4 +1,3 @@
-import { type } from "os";
 import { Entity, Column,PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
 import contrato from "./contrato";
 import tipoPoliticaCancelamento from "./tipoPoliticaCancelamento";
@@ -15,7 +14,7 @@ export default class tipoContrato {
     @JoinColumn()
     tipoPoliticaCancelamento: tipoPoliticaCancelamento;
     
-    @OneToOne(type => contrato, tipoContrato => tipoContrato)
+    @OneToOne(() => contrato, tipoContrato => tipoContrato)
     contrato: contrato;
 
 }

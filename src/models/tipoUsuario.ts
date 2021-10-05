@@ -1,4 +1,3 @@
-import { type } from "os";
 import { Entity, Column,PrimaryGeneratedColumn, OneToOne } from "typeorm";
 import usuario from "./usuario";
 
@@ -12,6 +11,6 @@ export default class tipoUsuario {
     descricao: string;
 
     //Relacionamento de tipoUsuario com usuario
-    @OneToOne(type => usuario,  tipoUsuario => tipoUsuario)
+    @OneToOne(()=> usuario,  tipoUsuario => tipoUsuario)
     usuario: usuario;
 }

@@ -10,6 +10,6 @@ export default class tipoPoliticaCancelamento {
     @Column()
     descricao: string;
 
-    @OneToOne(type => tipoContrato, tipoPoliticaCancelamento => tipoPoliticaCancelamento )
+    @OneToOne(() => tipoContrato, tipoPoliticaCancelamento => tipoPoliticaCancelamento )
     tipoContrato: tipoContrato;
 }
