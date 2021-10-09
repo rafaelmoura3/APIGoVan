@@ -1,6 +1,5 @@
-import { Entity, Column,PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, OneToOne, JoinColumn} from "typeorm";
+import { Entity, Column,PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, OneToOne} from "typeorm";
 import bcrypt from "bcryptjs";
-import tipoUsuario from "./tipoUsuario";
 import pessoa from "./pessoa";
 @Entity('usuario')
 export default class usuario {
@@ -21,18 +20,13 @@ export default class usuario {
     urlFoto: string;
 
     @Column()
-    usuarioTipo: number;
+    isMotorista: boolean;
 
     @BeforeInsert()
     @BeforeUpdate()
-    encryptSenha(){
+    encryptSenha(): void{
         this.senhaHash = bcrypt.hashSync(this.senhaHash, 8);
     }
-
-    //Relacionamento de tipousuario_fk com usuario
-    @OneToOne(()=> tipoUsuario, usuario=> usuario)
-    @JoinColumn()
-    tipoUsuario: tipoUsuario;
 
 
     @OneToOne(() => pessoa, usuario => usuario)

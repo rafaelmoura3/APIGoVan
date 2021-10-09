@@ -1,4 +1,4 @@
-import { Entity, Column,PrimaryGeneratedColumn, JoinColumn, OneToOne, OneToMany } from "typeorm";
+import { Entity, Column,PrimaryGeneratedColumn, JoinColumn, ManyToOne, OneToOne} from "typeorm";
 import motorista from "./motorista";
 import veiculo from "./veiculo";
 
@@ -8,8 +8,8 @@ export default class servico {
     @PrimaryGeneratedColumn('uuid')
     uuid: string;
 
-    @OneToMany(() => motorista, servico => servico)
-    motorista:motorista[];
+    @ManyToOne(() => motorista, servico => servico)
+    motorista:motorista;
 
     //@Column()
     //passageiro:

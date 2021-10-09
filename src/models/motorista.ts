@@ -1,4 +1,4 @@
-import { Entity, Column,PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Entity, Column,PrimaryGeneratedColumn, OneToMany,  } from "typeorm";
 import servico from "./servico";
 
 @Entity('motorista')
@@ -13,6 +13,7 @@ export default class motorista {
      //@Column()
     //pessoa:
 
-    @ManyToOne(() => servico, motorista => motorista)
-    servico: servico;
+    @OneToMany(() => servico, motorista => motorista)
+    servico: servico[];
+
 }

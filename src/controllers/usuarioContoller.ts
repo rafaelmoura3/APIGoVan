@@ -10,7 +10,7 @@ class usuarioController{
 
    async store(req: Request, res: Response){
         const repository = getRepository(User);
-        const { email, senhaHash, contato, urlFoto ,usuarioTipo} = req.body;
+        const { email, senhaHash, contato, urlFoto } = req.body;
 
         const userExists = await repository.findOne({ where: {email} });
 
@@ -18,7 +18,7 @@ class usuarioController{
             return res.sendStatus(409);
         }
 
-        const user = repository.create({ email, senhaHash, contato, urlFoto ,usuarioTipo});
+        const user = repository.create({ email, senhaHash, contato, urlFoto });
         await repository.save(user);
 
         return res.json(user);
