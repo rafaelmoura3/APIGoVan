@@ -6,32 +6,36 @@ import jwt from 'jsonwebtoken';
 import User from '../models/usuario';
 
 
-class loginController{
-   async login(req: Request, res: Response){
+class loginController {
+    async login(req: Request, res: Response) {
         const repository = getRepository(User);
-        const { email, senhaHash} = req.body;
+        const { email, senhaHash } = req.body;
 
-        const user = await repository.findOne({ where: {email} });
+        const user = await repository.findOne({ where: { email } });
 
-        if(!user){
-            return res.sendStatus(401);
+        if (!user) {
+            return res.sendStatus(401).json({
+                message: 'Usuário ou senha incorretos.'
+            });
         }
 
         const isValidPassord = await bcrypt.compare(senhaHash, user.senhaHash);
-        
-        if(!isValidPassord){
-            return res.sendStatus(401);
+
+        if (!isValidPassord) {
+            return res.sendStatus(401).json({
+                message: 'Usuário ou senha incorretos.'
+            });
         }
 
-        const token = jwt.sign({ id: user.uuid }, 'secret', {expiresIn: '1d'});
+        const token = jwt.sign({ id: user.uuid }, 'secret', { expiresIn: '1d' });
 
         delete user.senhaHash;
 
-        return res.json({
+        return res.status(200).json({
             user,
             token,
         });
-    }   
+    }
 }
 
 

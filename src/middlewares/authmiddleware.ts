@@ -1,31 +1,35 @@
-import {Request, Response, NextFunction} from 'express'
-import  jwt  from 'jsonwebtoken';
+import { Request, Response, NextFunction } from 'express'
+import jwt from 'jsonwebtoken';
 
 
-interface TokenPayload{
+interface TokenPayload {
     id: string;
     iat: number;
     exp: number;
 }
 
-export default function authMiddleware(req: Request, res: Response, next: NextFunction){
+export default function authMiddleware(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
 
-    if(!authorization){
-        return res.sendStatus(401);
+    if (!authorization) {
+        return res.status(401).json({
+            message: 'Não Autorizado.'
+        });
     }
 
     const token = authorization.replace('Bearer', '').trim();
 
-    try{
+    try {
         const data = jwt.verify(token, 'secret');
-        
+
         const { id } = data as TokenPayload;
 
         req.userid = id;
 
         return next();
-    }catch{
-        return res.sendStatus(401);
+    } catch {
+        return res.status(401).json({
+            message: 'Não Autorizado.'
+        });
     }
 }
