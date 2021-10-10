@@ -1,27 +1,49 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "go_van",
+  "authors": [
+    "Rafael Moura",
+    "Natan Amorim S G Moraes"
+  ],
+  "description": "TCC GoVan API",
+  "version": "0.1.0-BETA",
   "license": "MIT",
-  "scripts": {
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/servers.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NatanAmorim/ts-backend-boilerplate.git"
   },
-  "dependencies": {
-    "@types/jsonwebtoken": "^8.5.5",
-    "@types/node": "^16.4.0",
-    "@types/uuid": "^8.3.1",
-    "bcryptjs": "^2.4.3",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "pg": "^8.6.0",
-    "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.34"
+  "bugs": {
+    "url": "https://github.com/NatanAmorim/ts-backend-boilerplate/issues"
+  },
+  "homepage": "https://github.com/NatanAmorim/ts-backend-boilerplate#readme",
+  "keywords": [
+    "typescript",
+    "backend"
+  ],
+  "scripts": {
+    "start": "node dist/server.js",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "dev": "ts-node-dev --ignore-watch node_modules --respawn --transpile-only src/server.ts",
+    "debug": "ts-node-dev --ignore-watch node_modules --inspect=4321 --respawn --transpile-only src/server.ts",
+    "test": "jest",
+    "lint": ""
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
-    "@types/express": "^4.17.13",
-    "ts-node-dev": "^1.1.8",
-    "typescript": "^4.3.5"
+    "@types/express": "^4.17.12",
+    "@types/jsonwebtoken": "^8.5.2",
+    "@types/mongoose": "^5.11.97",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.14"
   }
 }

@@ -1,0 +1,148 @@
+@startuml Govan
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+skinparam DefaultFontName Arial
+skinparam DefaultFontSize 16
+skinparam DefaultFontStyle bold
+skinparam ArrowThickness 2.2
+hide empty members
+!define LIGHTBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam ArrowColor DeepSkyBlue
+
+class endereco {
+  - uuid: uuid
+  - cep: String
+  - logadouro: String
+  - numero: String
+  - bairro: String
+  - complemento: String
+  - cidade: String
+}
+
+class pessoa {
+  - uuid: uuid
+  - nome: String
+  - apelido: String
+  - rg: String
+  - cpf: String
+  - dataNascimento: String
+  - endereco_pk: endereco
+}
+
+class motorista {
+  - uuid: uuid
+  - pessoa_pk: pessoa
+  - cnh: string
+}
+
+class tipoPoliticaCancelamento {
+  - id: id
+  - descricao: String
+}
+
+class tipoContrato {
+  - uuid: uuid
+  - descricao: String
+  - tipoPoliticaCancelamento_pk: tipoPoliticaCancelamento
+}
+
+class contrato {
+  - uuid: uuid
+  - tipoContrato_pk: tipoContrato
+  - urlPDF: String
+  - detalhes: String
+  - dataInicio: dateTime
+  - dataFim: dateTime
+  - dataRenovacao: dateTime
+}
+
+class trajeto {
+  - uuid: uuid
+  - descricao: String
+  - pontoInicio: String
+  - pontoDestino: String
+  - horarioChegada: String
+  - valorCobrado: double
+}
+
+class servico {
+  - uuid: uuid
+  - motorista_pk: motorista
+  - pessoa_pk: pessoa
+  - trajeto_pk: trajeto
+  - veiculo_pk: veiculo
+}
+
+class usuario {
+  - uuid: uuid
+  - email: String
+  - senhaHash: String
+  - urlFoto: String
+  - isMotorista: boolean
+}
+
+class mensalidade {
+  - uuid: uuid
+  - valor: double
+  - meses: int
+  - diaPagamento: String
+  - pessoa_pk: pessoa
+  - servico_pk: servico
+  - mes_inicial: integer
+  - mes_atual: integer
+  - quitado: boolean
+}
+
+class fatura {
+  - uuid: uuid
+  - dataCriacao: dateTime
+  - valorTotal: double
+  - pagamento_pk: pagamento
+  - mensalidade_pk: mensalidade
+  - formaPagamento: String
+  - dataPagamento: String
+  - observacao: String
+}
+
+class veiculo {
+  - uuid: uuid
+  - placa: String
+  - urlFoto: String
+}
+
+class pagamento {
+  - uuid: uuid
+  - forma_de_pagamento: String
+  - valor_pago: double
+}
+
+pessoa "1" --- "1" endereco
+
+pessoa "1" --- "1" usuario
+
+motorista "0..1" --- "1" pessoa
+
+contrato "1" --- "1" tipoContrato
+
+tipoPoliticaCancelamento "1" -up-- "1" tipoContrato
+
+servico "1" --- "1" contrato
+
+servico "n" --- "1" pessoa
+
+servico "n" --- "1" motorista
+
+servico "n" -left-- "1" trajeto
+
+servico "1" --- "1" veiculo
+
+mensalidade "0..n" --- "1" fatura
+
+mensalidade "0..n" --- "1" pessoa
+
+mensalidade "0..n" --- "1" servico
+
+pagamento "1" --- "1" fatura
+
+@enduml
