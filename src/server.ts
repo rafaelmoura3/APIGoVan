@@ -6,7 +6,8 @@ import mongoose from 'mongoose';
 import logging from './configs/logging';
 import mongoConfig from './configs/mongoose';
 import authRotas from './routes/auth_routes';
-
+import usuarioRotas from './routes/usuario_routes';
+import servicoRotas from './routes/servico_routes';
 
 const NAMESPACE = 'GoVan API';
 const router = express();
@@ -45,6 +46,8 @@ router.use((req, res, next) => {
 
 /** Routes go here */
 router.use(`/api/auth`, authRotas);
+router.use(`/api/servico`, servicoRotas);
+router.use(`/api/usuario`, usuarioRotas);
 
 /** Error handling */
 router.use((req, res, next) => {

@@ -7,64 +7,6 @@ import signJWT from '../functions/signJTW';
 
 const NAMESPACE = 'Auth Model';
 
-const register = async (req: Request, res: Response, next: NextFunction) => {
-    //FIX: adicionar outros dados que estão faltando do usuário
-    let {
-        email,
-        senha,
-    } = req.body;
-
-    var conflict = false;
-
-    await Usuario.find({ email })
-        .exec()
-        .then((users) => {
-            if (users.length >= 1) {
-                conflict = true
-                return res.status(409).json({
-                    message: 'Conflicto com usuario existente'
-                });
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json({
-                error: err
-            });
-        });
-    if (conflict === false) {
-
-        bcryptjs.hash(senha, 10, (hashError, hash) => {
-            if (hashError) {
-                return res.status(401).json({
-                    message: hashError.message,
-                    error: hashError
-                });
-            }
-
-            const _usuario = new Usuario({
-                _id: new mongoose.Types.ObjectId(),
-                email,
-                senha: hash,
-            });
-
-            return _usuario
-                .save()
-                .then((usuario) => {
-                    return res.status(201).json({
-                        message: 'Criado com Sucesso',
-                    });
-                })
-                .catch((error) => {
-                    return res.status(500).json({
-                        message: error.message,
-                        error
-                    });
-                });
-        });
-    }
-};
-
 const login = async (req: Request, res: Response, next: NextFunction) => {
     let { email, senha } = req.body;
 
@@ -110,4 +52,4 @@ const validateToken = (req: Request, res: Response, next: NextFunction) => {
 };
 
 
-export default { register, validateToken, login };
+export default { validateToken, login };
