@@ -7,6 +7,8 @@ const UsuarioSchema: Schema = new Schema(
         senha: { type: String, required: true, trim: true, },
         url_foto: { type: String, required: false, trim: true, },
         is_motorista: { type: Boolean, required: true, default: true, },
+        minhas_vans: [{ type: String, required: false, trim: true, }], // vans dos passagueiros
+        meus_servicos: [{ type: String, required: false, trim: true, }], // serviços oferecidos pelo motorista
         pessoa: {
             nome: { type: String, required: true, trim: true, },
             apelido: { type: String, required: false, trim: true, },
@@ -20,7 +22,6 @@ const UsuarioSchema: Schema = new Schema(
                 numero: { type: String, required: false, trim: true, },
                 bairro: { type: String, required: true, trim: true, },
                 cidade: { type: String, required: true, trim: true, },
-                estado: { type: String, required: true, trim: true, },
                 complemento: { type: String, required: false, trim: true, },
             }
         }

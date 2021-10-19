@@ -5,6 +5,8 @@ export default interface IUsuario extends Document {
     senha: string;
     url_foto: string;
     is_motorista: boolean;
+    minhas_vans: string[],  // vans dos passagueiros
+    meus_servicos: string[], // serviços oferecidos pelo motorista
     pessoa: {
         nome: string;
         apelido: string;

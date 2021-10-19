@@ -14,8 +14,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
     pessoa,
   } = req.body;
 
-  let userExists = await Usuario.find({ email })
-    .exec()
+  let userExists = await Usuario.exists({ email })
     .catch((err) => {
       console.log(err);
       res.status(500).json({

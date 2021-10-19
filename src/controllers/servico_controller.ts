@@ -48,6 +48,7 @@ const show = async (req: Request, res: Response, next: NextFunction) => {
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
   let {
+    //fix
     motoristas_id,
     veiculos,
     trajeto,
@@ -110,4 +111,36 @@ const destroy = async (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-export default { index, show, register, update, destroy };
+const search = async (req: Request, res: Response, next: NextFunction) => {
+  const { input } = req.body;
+
+  console.log(input)
+
+  await Servico.find({
+    //fix
+    $or: [
+      { area_inspecao_codigo: { $regex: input, $options: 'i' } },
+      { area_inspecao_sigla: { $regex: input, $options: 'i' } },
+      { area_inspecao_setor: { $regex: input, $options: 'i' } },
+      { area_inspecao_local: { $regex: input, $options: 'i' } },
+      { "unidades_inspecao.unidade_inspecao_codigo": input },
+      { "unidades_inspecao.unidade_inspecao_sigla": input },
+      { "unidades_inspecao.unidade_inspecao_unidade": input },
+      { "unidades_inspecao.unidade_inspecao_local": input },
+      // { unidades_inspecao: input },
+    ],
+  }).then((servicos) => {
+    return res.status(200).json({
+      servicos: servicos,
+      count: servicos.length
+    });
+  })
+    .catch((error) => {
+      return res.status(500).json({
+        message: error.message,
+        error
+      });
+    });
+}
+
+export default { index, show, register, update, destroy, search };

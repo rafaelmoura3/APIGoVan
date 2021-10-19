@@ -22,13 +22,13 @@ const MONGO = {
     password: MONGO_PASSWORD,
     username: MONGO_USERNAME,
     options: MONGO_OPTIONS,
-    url: `mongodb://localhost:27017/aps_db`
+    url: `mongodb://localhost:27017/govan_db`
 };
 
 const SERVER_HOSTNAME = process.env.SERVER_HOSTNAME || 'localhost';
 const SERVER_PORT = process.env.SERVER_PORT || 1337;
 const SERVER_TOKEN_EXPIRETIME = process.env.SERVER_TOKEN_EXPIRETIME || 3600;
-const SERVER_TOKEN_ISSUER = process.env.SERVER_TOKEN_ISSUER || 'Natan Amorim';
+const SERVER_TOKEN_ISSUER = process.env.SERVER_TOKEN_ISSUER || 'Natan Amorim, Rafael Moura, Michael Dioniso';
 const SERVER_TOKEN_SECRET = process.env.SERVER_TOKEN_SECRET || 'secret here!';
 
 const SERVER = {
