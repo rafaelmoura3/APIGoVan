@@ -5,18 +5,26 @@ import logging from '../configs/logging';
 import Usuario from '../models/usuario_model';
 import signJWT from '../functions/signJTW';
 
-const NAMESPACE = 'Auth Model';
+const NAMESPACE = 'Auth Controller';
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
     let { email, senha } = req.body;
 
-    const user = await Usuario.findOne({ email }).select('+senha');
+    let userExists = await Usuario.exists({ email })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
 
-    if (!user) {
-        return res.status(401).json({
-            message: 'Nao Autorizado'
+    if (!userExists) {
+        return res.status(409).json({
+            message: 'E-mail ou senha errado.'
         });
     }
+
+    const user = await Usuario.findOne({ email }).select('+senha');
 
     if (!await bcryptjs.compare(senha, user.senha)) {
         return res.status(401).json({

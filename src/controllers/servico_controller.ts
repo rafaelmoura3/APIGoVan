@@ -1,11 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
-import bcryptjs from 'bcryptjs';
-import logging from '../configs/logging';
 import Servico from '../models/servico_model';
-import signJWT from '../functions/signJTW';
 
-const NAMESPACE = 'Auth Model';
+const NAMESPACE = 'Serviço Controller';
 
 const index = async (req: Request, res: Response, next: NextFunction) => {
   Servico.find()
@@ -48,8 +45,9 @@ const show = async (req: Request, res: Response, next: NextFunction) => {
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
   let {
-    //fix
-    motoristas_id,
+    titulo,
+    descricao,
+    vagas_disponiveis,
     veiculos,
     trajeto,
     contrato,
@@ -58,7 +56,9 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 
   let _servico = new Servico({
     _id: new mongoose.Types.ObjectId(),
-    motoristas_id,
+    titulo,
+    descricao,
+    vagas_disponiveis,
     veiculos,
     trajeto,
     contrato,

@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import bcryptjs from 'bcryptjs';
 import Usuario from '../models/usuario_model';
 
-const NAMESPACE = 'Usuarios Model';
+const NAMESPACE = 'Usuarios Controller';
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
   let {
@@ -131,7 +131,6 @@ const index = async (req: Request, res: Response, next: NextFunction) => {
     .then((usuarios) => {
       return res.status(200).json({
         usuarios: usuarios,
-        count: usuarios.length
       });
     })
     .catch((error) => {

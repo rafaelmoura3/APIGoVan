@@ -1,6 +1,8 @@
 import { Document } from 'mongoose';
 
 export default interface IServico extends Document {
+  titulo: string,
+  descricao: string,
   vagas_disponiveis: number,
   veiculos: [{
     placa: string,
@@ -35,7 +37,7 @@ export default interface IServico extends Document {
       pagamento: [{
         valor: number,
         is_pago: boolean,
-        forma_pagamento: { type: Number, required: false, },
+        forma_pagamento: string,
       }],
     }]
   }],

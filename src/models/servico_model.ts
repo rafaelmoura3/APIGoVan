@@ -3,6 +3,8 @@ import IServico from '../interfaces/servico_interface';
 
 const ServicoSchema: Schema = new Schema(
     {
+        titulo: { type: String, required: true, trim: true, },
+        descricao: { type: String, required: true, trim: true, },
         vagas_disponiveis: { type: Number, required: true, },
         veiculos: [{
             placa: { type: String, required: true, unique: true, trim: true, index: true },
