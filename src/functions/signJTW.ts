@@ -1,19 +1,20 @@
 import jwt from 'jsonwebtoken';
 import mongoConfig from '../configs/mongoose';
 import logging from '../configs/logging';
-import IAuth from '../interfaces/auth_interface';
+import IUser from '../interfaces/usuario_interface';
 
 const NAMESPACE = 'Auth';
 
-const signJWT = (user: IAuth, callback: (error: Error | null, token: string | null) => void): void => {
+const signJWT = (user: IUser, callback: (error: Error | null, token: string | null) => void): void => {
 
-    logging.info(NAMESPACE, `Tentativa de Login: ID=${user._id} NAME=${user.username}`);
+    logging.info(NAMESPACE, `Tentativa de Login: ID=${user._id} NAME=${user.email}`);
 
     try {
         jwt.sign(
             {
-                id: user._id,
-                username: user.username,
+                usuario_id: user._id,
+                usuario_nome: user.pessoa.nome,
+                usuario_is_motorista: user.is_motorista,
             },
             mongoConfig.server.token.secret,
             {
@@ -23,10 +24,10 @@ const signJWT = (user: IAuth, callback: (error: Error | null, token: string | nu
             (error, token) => {
                 if (error) {
                     callback(error, null);
-                    logging.error(NAMESPACE, `Falha de Login, ERRO: ID=${user._id} NAME=${user.username}`);
+                    logging.error(NAMESPACE, `Falha de Login, ERRO: ID=${user._id} NAME=${user.email}`);
                 } else if (token) {
                     callback(null, token);
-                    logging.info(NAMESPACE, `Login Autorizado: ID=${user._id} NAME=${user.username}`);
+                    logging.info(NAMESPACE, `Login Autorizado: ID=${user._id} NAME=${user.email}`);
                 }
             }
         );

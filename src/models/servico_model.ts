@@ -16,7 +16,7 @@ const ServicoSchema: Schema = new Schema(
             descricao: { type: String, required: true, trim: true, },
             ponto_inicio: { type: String, required: true, trim: true, },
             ponto_fim: { type: String, required: true, trim: true, },
-            valor_cobrado: { type: Number, required: true, },
+            valor_cobrado: { type: String, required: true, },
             faculdades: [{
                 nome: { type: String, required: true, trim: true, },
                 horario_chegada: { type: String, required: true, trim: true, },
@@ -30,8 +30,12 @@ const ServicoSchema: Schema = new Schema(
                 meses_minimo: { type: Number, required: false, trim: true, },
             },
         },
+        motorista: {
+            pessoa_id: { type: String, required: false, },
+            nome: { type: String, required: false, },
+        },
         passageiros: [{
-            pessoa_id: { type: String, required: false, trim: true, },
+            pessoa_id: { type: String, required: false, },
             data_inicio_contrato: { type: String, required: false, trim: true, },
             data_fim_contrato: { type: String, required: false, trim: true, },
             mensalidade: [{
@@ -39,7 +43,7 @@ const ServicoSchema: Schema = new Schema(
                 pagamento: [{
                     valor: { type: Number, required: true, },
                     is_pago: { type: Boolean, required: true, trim: true, },
-                    forma_pagamento: { type: Number, required: false, },
+                    forma_pagamento: { type: String, required: false, trim: true, },
                 }],
             }]
         }],

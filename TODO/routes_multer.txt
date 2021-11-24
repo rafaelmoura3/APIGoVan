@@ -1,0 +1,20 @@
+import express from 'express';
+import controller from '../controllers/v1/pac_inspecao_controller';
+import multer from 'multer';
+import multerConfig from '../configs/multer/pac_inspection_multer';
+import autenticarToken from '../middleware/extractJWT';
+import autenticarTokenRole from '../middleware/extractAdminJWT';
+
+const router = express.Router();
+const upload = multer(multerConfig);
+
+router.get('/', autenticarToken, controller.index);
+router.get('/pending', autenticarToken, controller.indexPending);
+@@ -15,7 +12,6 @@ router.get('/:id', autenticarToken, controller.show);
+router.post('/', autenticarToken, controller.create);
+router.delete('/:id', autenticarToken, controller.destroy);
+
+router.post('/image_upload', autenticarToken, upload.array('images'), controller.uploadImage);
+router.patch('/verify_inspection', autenticarTokenRole, controller.verifyInspection);
+
+export = router;

@@ -10,7 +10,42 @@ const index = async (req: Request, res: Response, next: NextFunction) => {
     .then((servicos) => {
       return res.status(200).json({
         servicos: servicos,
-        count: servicos.length
+      });
+    })
+    .catch((error) => {
+      return res.status(500).json({
+        message: error.message,
+        error
+      });
+    });
+};
+
+const indexMotorista = async (req: Request, res: Response, next: NextFunction) => {
+  const { jwt } = res.locals;
+
+  Servico.find({ 'motorista.pessoa_id': jwt.usuario_id })
+    .exec()
+    .then((servicos) => {
+      return res.status(200).json({
+        servicos: servicos,
+      });
+    })
+    .catch((error) => {
+      return res.status(500).json({
+        message: error.message,
+        error
+      });
+    });
+};
+
+const indexPassageiro = async (req: Request, res: Response, next: NextFunction) => {
+  const { jwt } = res.locals;
+
+  Servico.find({ "passageiros.pessoa_id": jwt.usuario_id })
+    .exec()
+    .then((servicos) => {
+      return res.status(200).json({
+        servicos: servicos,
       });
     })
     .catch((error) => {
@@ -44,6 +79,7 @@ const show = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
+
   let {
     titulo,
     descricao,
@@ -54,6 +90,8 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
     passageiros,
   } = req.body;
 
+  const { jwt } = res.locals;
+
   let _servico = new Servico({
     _id: new mongoose.Types.ObjectId(),
     titulo,
@@ -62,8 +100,14 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
     veiculos,
     trajeto,
     contrato,
+    motorista: {
+      pessoa_id: jwt.usuario_id,
+      nome: jwt.usuario_nome,
+    },
     passageiros,
   });
+
+
 
   return _servico
     .save()
@@ -119,20 +163,12 @@ const search = async (req: Request, res: Response, next: NextFunction) => {
   await Servico.find({
     //fix
     $or: [
-      { area_inspecao_codigo: { $regex: input, $options: 'i' } },
-      { area_inspecao_sigla: { $regex: input, $options: 'i' } },
-      { area_inspecao_setor: { $regex: input, $options: 'i' } },
-      { area_inspecao_local: { $regex: input, $options: 'i' } },
-      { "unidades_inspecao.unidade_inspecao_codigo": input },
-      { "unidades_inspecao.unidade_inspecao_sigla": input },
-      { "unidades_inspecao.unidade_inspecao_unidade": input },
-      { "unidades_inspecao.unidade_inspecao_local": input },
-      // { unidades_inspecao: input },
+      { titulo: { $regex: input, $options: 'i' } },
+      { descricao: { $regex: input, $options: 'i' } },
     ],
   }).then((servicos) => {
     return res.status(200).json({
       servicos: servicos,
-      count: servicos.length
     });
   })
     .catch((error) => {
@@ -143,4 +179,4 @@ const search = async (req: Request, res: Response, next: NextFunction) => {
     });
 }
 
-export default { index, show, register, update, destroy, search };
+export default { index, indexMotorista, indexPassageiro, show, register, update, destroy, search };

@@ -1,0 +1,31 @@
+const uploadImage = async (req: Request, res: Response, next: NextFunction) => {
+  let {
+    id,
+    updatedBy,
+  } = req.body;
+
+  if (!req.files) { // Se não contém imagens
+    return res.status(500).json({
+      message: 'No images Found',
+    });
+  } else {
+    const requestImages = req.files as Express.Multer.File[];
+
+    const filenames = requestImages.map(function (file) {
+      return file.filename; // or file.originalname
+    });
+
+    await PacInspecao.findOneAndUpdate({ _id: id },
+      {
+        pac_inspecao_rota_imagem: filenames,
+        updatedBy: updatedBy,
+      })
+      .then(() => res.status(204).send())
+      .catch((error) => {
+        return res.status(500).json({
+          message: error.message,
+          error
+        });
+      });
+  }
+}

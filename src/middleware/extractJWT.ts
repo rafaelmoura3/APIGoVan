@@ -17,16 +17,9 @@ const autenticarToken = (req: Request, res: Response, next: NextFunction) => {
                 return res.status(401).json({
                     error
                 });
-            } else
-                res.locals.jwt = decoded;
-            if (decoded.usuario_role === 'inactive') {
-                logging.error(NAMESPACE, 'Erro na validacao, nao tem permissao.');
-                return res.status(403).json({
-                    message: 'Requisicao nao autorizada, nao tem permissao'
-                });
             } else {
                 res.locals.jwt = decoded;
-                logging.info(NAMESPACE, `Sucesso de validacao de token ID=${decoded.usuario_id} NAME=${decoded.usuario_nome_completo}`);
+                logging.info(NAMESPACE, `Sucesso de validacao de token ID=${decoded.id} NAME=${decoded.nome}`);
                 next();
             }
         });

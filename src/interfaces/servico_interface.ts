@@ -14,7 +14,7 @@ export default interface IServico extends Document {
     descricao: string,
     ponto_inicio: string,
     ponto_fim: string,
-    valor_cobrado: number,
+    valor_cobrado: string,
     faculdades: [{
       nome: string,
       horario_chegada: string,
@@ -28,6 +28,10 @@ export default interface IServico extends Document {
       meses_minimo: number,
     },
   },
+  motorista: {
+    pessoa_id: string,
+    nome: string,
+  }
   passageiros: [{
     pessoa_id: string,
     data_inicio_contrato: string,

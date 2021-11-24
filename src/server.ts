@@ -1,7 +1,9 @@
 import http from 'http';
 import express from 'express';
-import compression from 'compression';
 import mongoose from 'mongoose';
+import compression from 'compression';
+import { WebSocketServer } from 'ws';
+
 
 import logging from './configs/logging';
 import mongoConfig from './configs/mongoose';
@@ -37,8 +39,9 @@ router.use((req, res, next) => {
     logging.info(NAMESPACE, `METHOD: [${req.method}] - URL: [${req.url}] - STATUS: [${res.statusCode}] - IP: [${req.socket.remoteAddress}]`);
 
     // WARNING: !AVISO! SÒ DEIXAR HABILITADO EM TESTES!
-    // console.log(JSON.stringify(res.req.body, null, 4)); // LOG   REQUEST JSON
-    // console.log(res.json()); // LOG *FULL* RESPONSE JSON
+    console.log("REQUEST"); // LOG *FULL* RESPONSE JSON
+    console.log(JSON.stringify(res.req.body, null, 4)); // LOG   REQUEST JSON
+    console.log(res.json().statusCode + ' ' + res.json().statusMessage); // LOG *FULL* RESPONSE JSON
   });
 
   next();
@@ -59,5 +62,16 @@ router.use((req, res, next) => {
 });
 
 const httpServer = http.createServer(router);
+
+const webSocketServer = new WebSocketServer({ port: 3337 });
+
+logging.info(NAMESPACE, `Websocket online on localhost:3337`);
+
+webSocketServer.on('connection', function connection(webSocket) {
+  webSocket.on('message', function incoming(message) {
+    console.log(`Received from -> ` + message);
+    webSocket.send(`${message}`);
+  });
+});
 
 httpServer.listen(mongoConfig.server.port, () => logging.info(NAMESPACE, `Servidor on-line em ${mongoConfig.server.hostname}:${mongoConfig.server.port}`));
