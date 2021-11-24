@@ -179,4 +179,29 @@ const search = async (req: Request, res: Response, next: NextFunction) => {
     });
 }
 
-export default { index, indexMotorista, indexPassageiro, show, register, update, destroy, search };
+const uploadImages = async (req: Request, res: Response, next: NextFunction) => {
+  console.log(req.files)
+
+  if (!req.files) { // Se não contém imagens
+    return res.status(500).json({
+      message: 'No images Found',
+    });
+  } else {
+    const requestImages = req.files as Express.Multer.File[];
+
+    const filenames = requestImages.map(function (file) {
+      return file.filename; // or file.originalname
+    });
+
+
+    res.status(204).send(); // TODO: mudar resposta
+  }
+}
+
+const uploadPdf = async (req: Request, res: Response, next: NextFunction) => {
+  console.log(req.file)
+
+  res.status(204).send(); // TODO: mudar resposta
+}
+
+export default { index, indexMotorista, indexPassageiro, show, register, update, destroy, search, uploadImages, uploadPdf };
