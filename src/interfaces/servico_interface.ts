@@ -34,6 +34,7 @@ export default interface IServico extends Document {
   }
   passageiros: [{
     pessoa_id: string,
+    pessoa_nome: string,
     data_inicio_contrato: string,
     data_fim_contrato: string,
     mensalidade: [{

@@ -228,7 +228,7 @@ const contratar = async (req: Request, res: Response, next: NextFunction) => {
     mensalidade.push(
       {
         data_vencimento: moment(date).add(i + 1, 'M').toISOString(),
-        valor: _servico.trajeto.valor_cobrado,
+        valor: parseInt(_servico.trajeto.valor_cobrado.replace('R$ ', '')),
         is_pago: false,
       }
     )
@@ -239,6 +239,7 @@ const contratar = async (req: Request, res: Response, next: NextFunction) => {
       $push: {
         'passageiros': {
           pessoa_id: jwt.usuario_id,
+          pessoa_nome: jwt.usuario_nome,
           data_inicio_contrato,
           data_fim_contrato,
           mensalidade,

@@ -36,6 +36,7 @@ const ServicoSchema: Schema = new Schema(
         },
         passageiros: [{
             pessoa_id: { type: String, required: false, },
+            pessoa_nome: { type: String, required: false, },
             data_inicio_contrato: { type: String, required: false, trim: true, },
             data_fim_contrato: { type: String, required: false, trim: true, },
             mensalidade: [{
