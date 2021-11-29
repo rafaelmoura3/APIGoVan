@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
+import moment from 'moment';
 import Servico from '../models/servico_model';
 
 const NAMESPACE = 'Serviço Controller';
@@ -87,7 +88,6 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
     veiculos,
     trajeto,
     contrato,
-    passageiros,
   } = req.body;
 
   const { jwt } = res.locals;
@@ -104,10 +104,8 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
       pessoa_id: jwt.usuario_id,
       nome: jwt.usuario_nome,
     },
-    passageiros,
+    passageiros: [],
   });
-
-
 
   return _servico
     .save()
@@ -204,4 +202,58 @@ const uploadPdf = async (req: Request, res: Response, next: NextFunction) => {
   res.status(204).send(); // TODO: mudar resposta
 }
 
-export default { index, indexMotorista, indexPassageiro, show, register, update, destroy, search, uploadImages, uploadPdf };
+const contratar = async (req: Request, res: Response, next: NextFunction) => {
+  const { id } = req.params;
+  const { jwt } = res.locals;
+  const { data_inicio_contrato, data_fim_contrato } = req.body;
+
+  let _servico = await Servico.findById(id);
+
+  if (!_servico) {
+    return res.status(418).json({
+      message: 'Serviço nao encontrado'
+    });
+  }
+
+  if (_servico.vagas_disponiveis === _servico.passageiros.length) {
+    return res.status(418).json({
+      message: 'Serviço Não tem Vagas abertas',
+      mensalidade,
+    });
+  }
+
+  let date = Date.now()
+  var mensalidade = [];
+  for (let i = 0; i < 6; i++) {
+    mensalidade.push(
+      {
+        data_vencimento: moment(date).add(i + 1, 'M').toISOString(),
+        valor: _servico.trajeto.valor_cobrado,
+        is_pago: false,
+      }
+    )
+  }
+
+  await _servico.updateOne(
+    {
+      $push: {
+        'passageiros': {
+          pessoa_id: jwt.usuario_id,
+          data_inicio_contrato,
+          data_fim_contrato,
+          mensalidade,
+        }
+      }
+    },
+    { upsert: true },
+  )
+    .then(() => res.status(202).send({ message: 'Contratado com sucesso' }))
+    .catch(error => {
+      return res.status(500).json({
+        message: error.message,
+        error
+      });
+    });
+};
+
+export default { index, indexMotorista, indexPassageiro, show, register, update, destroy, search, uploadImages, uploadPdf, contratar };

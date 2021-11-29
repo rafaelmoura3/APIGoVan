@@ -37,12 +37,10 @@ export default interface IServico extends Document {
     data_inicio_contrato: string,
     data_fim_contrato: string,
     mensalidade: [{
-      data_pagamento: string,
-      pagamento: [{
-        valor: number,
-        is_pago: boolean,
-        forma_pagamento: string,
-      }],
+      data_vencimento: string,
+      valor: number,
+      is_pago: boolean,
+      forma_pagamento: string,
     }]
   }],
 }

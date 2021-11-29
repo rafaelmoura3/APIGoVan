@@ -17,6 +17,7 @@ router.post('/', autenticarToken, controller.register);
 router.post('/search', autenticarToken, controller.search);
 router.post('/image_upload', autenticarToken, uploadImagens.array('images'), controller.uploadImages);
 router.post('/pdf_upload', autenticarToken, uploadPdf.single('pdf'), controller.uploadPdf);
+router.put('/contratar/:id', autenticarToken, controller.contratar);
 router.patch('/:id', autenticarToken, controller.update);
 router.delete('/:id', autenticarToken, controller.destroy);
 

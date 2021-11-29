@@ -39,12 +39,10 @@ const ServicoSchema: Schema = new Schema(
             data_inicio_contrato: { type: String, required: false, trim: true, },
             data_fim_contrato: { type: String, required: false, trim: true, },
             mensalidade: [{
-                data_pagamento: { type: String, required: false, trim: true, },
-                pagamento: [{
-                    valor: { type: Number, required: true, },
-                    is_pago: { type: Boolean, required: true, trim: true, },
-                    forma_pagamento: { type: String, required: false, trim: true, },
-                }],
+                data_vencimento: { type: String, required: false, trim: true, },
+                valor: { type: Number, required: false, },
+                is_pago: { type: Boolean, required: false, trim: true, },
+                forma_pagamento: { type: String, required: false, trim: true, },
             }]
         }],
     },
