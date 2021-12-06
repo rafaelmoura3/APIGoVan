@@ -5,6 +5,7 @@ const ServicoSchema: Schema = new Schema(
     {
         titulo: { type: String, required: true, trim: true, },
         descricao: { type: String, required: true, trim: true, },
+        valor_cobrado: { type: String, required: true, trim: true, },
         vagas_disponiveis: { type: Number, required: true, },
         veiculos: [{
             placa: { type: String, required: true, unique: true, trim: true, index: true },
@@ -14,12 +15,17 @@ const ServicoSchema: Schema = new Schema(
         }],
         trajeto: {
             descricao: { type: String, required: true, trim: true, },
-            ponto_inicio: { type: String, required: true, trim: true, },
-            ponto_fim: { type: String, required: true, trim: true, },
-            valor_cobrado: { type: String, required: true, },
+            ponto_inicio: {
+                latitude: { type: Number, required: true, },
+                longitude: { type: Number, required: true, },
+            },
             faculdades: [{
                 nome: { type: String, required: true, trim: true, },
                 horario_chegada: { type: String, required: true, trim: true, },
+                localizacao: {
+                    latitude: { type: Number, required: true, },
+                    longitude: { type: Number, required: true, },
+                }
             }],
         },
         contrato: {

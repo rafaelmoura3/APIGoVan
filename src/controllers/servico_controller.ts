@@ -84,6 +84,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
   let {
     titulo,
     descricao,
+    valor_cobrado,
     vagas_disponiveis,
     veiculos,
     trajeto,
@@ -96,6 +97,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
     _id: new mongoose.Types.ObjectId(),
     titulo,
     descricao,
+    valor_cobrado,
     vagas_disponiveis,
     veiculos,
     trajeto,
@@ -159,7 +161,6 @@ const search = async (req: Request, res: Response, next: NextFunction) => {
   console.log(input)
 
   await Servico.find({
-    //fix
     $or: [
       { titulo: { $regex: input, $options: 'i' } },
       { descricao: { $regex: input, $options: 'i' } },
@@ -228,7 +229,7 @@ const contratar = async (req: Request, res: Response, next: NextFunction) => {
     mensalidade.push(
       {
         data_vencimento: moment(date).add(i + 1, 'M').toISOString(),
-        valor: parseInt(_servico.trajeto.valor_cobrado.replace('R$ ', '')),
+        valor: parseInt(_servico.valor_cobrado.replace('R$ ', '')),
         is_pago: false,
       }
     )

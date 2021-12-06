@@ -3,6 +3,7 @@ import { Document } from 'mongoose';
 export default interface IServico extends Document {
   titulo: string,
   descricao: string,
+  valor_cobrado: string,
   vagas_disponiveis: number,
   veiculos: [{
     placa: string,
@@ -12,12 +13,17 @@ export default interface IServico extends Document {
   }],
   trajeto: {
     descricao: string,
-    ponto_inicio: string,
-    ponto_fim: string,
-    valor_cobrado: string,
+    ponto_inicio: {
+      latitude: number,
+      longitude: number,
+    },
     faculdades: [{
       nome: string,
       horario_chegada: string,
+      localizacao: {
+        latitude: number,
+        longitude: number,
+      },
     }],
   },
   contrato: {
