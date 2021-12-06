@@ -18,6 +18,7 @@ router.post('/search', autenticarToken, controller.search);
 router.post('/image_upload', autenticarToken, uploadImagens.array('images'), controller.uploadImages);
 router.post('/pdf_upload', autenticarToken, uploadPdf.single('pdf'), controller.uploadPdf);
 router.put('/contratar/:id', autenticarToken, controller.contratar);
+router.patch('/pagamento/:id', autenticarToken, controller.marcarPago);
 router.patch('/:id', autenticarToken, controller.update);
 router.delete('/:id', autenticarToken, controller.destroy);
 

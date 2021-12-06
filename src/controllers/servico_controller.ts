@@ -205,7 +205,7 @@ const uploadPdf = async (req: Request, res: Response, next: NextFunction) => {
 const contratar = async (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
   const { jwt } = res.locals;
-  const { data_inicio_contrato, data_fim_contrato } = req.body;
+  const { data_inicio_contrato, data_fim_contrato, duracao_meses } = req.body;
 
   let _servico = await Servico.findById(id);
 
@@ -224,7 +224,7 @@ const contratar = async (req: Request, res: Response, next: NextFunction) => {
 
   let date = Date.now()
   var mensalidade = [];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < duracao_meses; i++) {
     mensalidade.push(
       {
         data_vencimento: moment(date).add(i + 1, 'M').toISOString(),
@@ -257,4 +257,23 @@ const contratar = async (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-export default { index, indexMotorista, indexPassageiro, show, register, update, destroy, search, uploadImages, uploadPdf, contratar };
+const marcarPago = async (req: Request, res: Response, next: NextFunction) => {
+  const { id } = req.params;
+  const { passageiro_id, data_vencimento, forma_pagamento } = req.body;
+
+  await Servico.findOne({ _id: id })
+    .then(servico => {
+      const passageiroIndex = servico.passageiros.map(item => item.pessoa_id).indexOf(passageiro_id);
+      const dataVencimentoIndex = servico.passageiros[passageiroIndex].mensalidade.map(item => item.data_vencimento).indexOf(data_vencimento);
+      servico.passageiros[passageiroIndex].mensalidade[dataVencimentoIndex].is_pago = true;
+      servico.passageiros[passageiroIndex].mensalidade[dataVencimentoIndex].forma_pagamento = forma_pagamento;
+      servico.save();
+    }).then(() => res.status(202).send({ message: 'Atualizado com sucesso' }))
+    .catch((error) => {
+      return res.status(500).json({
+        error
+      });
+    });
+};
+
+export default { index, indexMotorista, indexPassageiro, show, register, update, destroy, search, uploadImages, uploadPdf, contratar, marcarPago, };
