@@ -1,6 +1,7 @@
 import { Document } from 'mongoose';
 
 export default interface IServico extends Document {
+  foto_servico_url: string,
   titulo: string,
   descricao: string,
   valor_cobrado: string,

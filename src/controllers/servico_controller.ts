@@ -82,6 +82,7 @@ const show = async (req: Request, res: Response, next: NextFunction) => {
 const register = async (req: Request, res: Response, next: NextFunction) => {
 
   let {
+    foto_servico_url,
     titulo,
     descricao,
     valor_cobrado,
@@ -95,6 +96,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 
   let _servico = new Servico({
     _id: new mongoose.Types.ObjectId(),
+    foto_servico_url,
     titulo,
     descricao,
     valor_cobrado,
@@ -206,7 +208,10 @@ const uploadPdf = async (req: Request, res: Response, next: NextFunction) => {
 const contratar = async (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
   const { jwt } = res.locals;
-  const { data_inicio_contrato, data_fim_contrato, duracao_meses } = req.body;
+  // const { data_inicio_contrato, data_fim_contrato, duracao_meses } = req.body;
+  const { data_inicio_contrato, data_fim_contrato, } = req.body;
+
+  var duracao_meses = 6;
 
   let _servico = await Servico.findById(id);
 

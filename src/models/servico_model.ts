@@ -3,6 +3,8 @@ import IServico from '../interfaces/servico_interface';
 
 const ServicoSchema: Schema = new Schema(
     {
+
+        foto_servico_url: { type: String, required: false, trim: true, },
         titulo: { type: String, required: true, trim: true, },
         descricao: { type: String, required: true, trim: true, },
         valor_cobrado: { type: String, required: true, trim: true, },
